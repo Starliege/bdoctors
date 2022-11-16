@@ -13,7 +13,7 @@ class SpecializationSeeder extends Seeder
     public function run()
     {
         $specializzazioni = [
-            'Allergologo',
+            'Urrianologo',
             'Anatomopatologo',
             'Andrologo',
             'Anestesista',
@@ -25,13 +25,13 @@ class SpecializationSeeder extends Seeder
             'Chirurgo',
             'Chirurgo Estetico',
             'Chirurgo Generale',
-            'Chirurgo Maxillo Facciale',
+            'Chirurgo Maninfaccia',
             'Chirurgo Pediatrico',
             'Chirurgo Plastico',
             'Chirurgo Toracico',
             'Chirurgo Vascolare',
             'Chirurgo Vertebrale',
-            'Covidtest',
+            'Medico Della Peste',
             'Dentista',
             'Dermatologo',
             'Diabetologo',
