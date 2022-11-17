@@ -44,26 +44,4 @@ return [
         'Rosa',
         'Morelli'
     ],
-    'addresses' => [
-        'Via Soci 23',
-        'Via Snitch 4',
-        'Via Gialosai 10',
-        'Via Fizz 15',
-        'Via Swain 2',
-        'Via Mario Marielli 8',
-        'Via Giacomo Grigotti 2',
-        'Via Ponzio Pilato 56',
-        'Via Monte Nevoso 6',
-        'Via Del Drago 43',
-        'Via Del Vento 65',
-        'Via Montessori 69',
-        'Via Adige 6',
-        'Via Giallini 67',
-        'Via Perotti 43',
-        'Via Giunone 9',
-        'Via Macabra 9',
-        'Via Del Fuoco 43',
-        'Via Della Seta 57',
-        'Via Volta 3'
-    ],
 ];

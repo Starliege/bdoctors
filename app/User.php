@@ -39,4 +39,7 @@ class User extends Authenticatable
     public function specializations(){
         return $this->belongsToMany('App\Specialization');
     }
+    public function stars(){
+        return $this->belongsToMany('App\Star');
+    }
 }
