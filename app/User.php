@@ -42,4 +42,7 @@ class User extends Authenticatable
     public function stars(){
         return $this->belongsToMany('App\Star');
     }
+    public function sponsorships(){
+        return $this->belongsToMany('App\Sponsorship');
+    }
 }
