@@ -53,8 +53,9 @@
                             </div>
                         </div>
 
-                    <label for="specialization" class="col-md-4 col-form-label text-md-right">{{ __('Specializzazione') }}</label>
+                
                         <div class="form-group row">
+                            <label for="specialization" class="col-md-4 col-form-label text-md-right">{{ __('Specializzazione') }}</label>
                             
                             <div class="col-md-6">
                                 <input id="specialization" type="text" class="form-control @error('specialization') is-invalid @enderror" name="specialization" value="{{ old('specialization') }}" required autocomplete="specialization" autofocus>
