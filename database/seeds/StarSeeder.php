@@ -16,9 +16,9 @@ class StarSeeder extends Seeder
     {
         for ($i=0; $i <50 ; $i++) { 
             $star = new Star();
-
+        
             $star->vote = $faker->numberBetween(1, 5);
-
+        
             $star->save();
         }
     }
