@@ -45,4 +45,10 @@ class User extends Authenticatable
     public function sponsorships(){
         return $this->belongsToMany('App\Sponsorship');
     }
+    public function reviews(){
+        return $this->hasMany('App\Review');
+    }
+    public function messages(){
+        return $this->hasMany('App\Message');
+    }
 }

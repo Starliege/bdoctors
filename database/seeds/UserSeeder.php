@@ -17,7 +17,6 @@ class UserSeeder extends Seeder
     public function run(Faker $faker)
     {
         //
-        $data = include('config\doctors.php');
         $specialization = Specialization::all()->pluck('id');
         $star = Star::all()->pluck('id');
         $services = [
