@@ -4,4 +4,9 @@
     possibilità di leggere i messaggi
     possibilità di vedere le statistiche --}}
 
-    pipipipipi
+@extends('layouts.app')
+@section('content')
+
+
+
+@endsection
