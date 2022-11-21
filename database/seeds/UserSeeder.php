@@ -38,8 +38,10 @@ class UserSeeder extends Seeder
             $new_doctor->save();
             $specializationIds = $specialization->shuffle()->take(rand(1,4))->all();
             $new_doctor->specializations()->sync($specializationIds);
-            $starIds = $star->all();
-            $new_doctor->stars()->sync($starIds);
+            for($j = 0; $j < rand(1,20); $j++) {
+            $starIds = $star->shuffle()->take(1)->all();
+            $new_doctor->stars()->attach($starIds);
+            }
         }
     }
 }
