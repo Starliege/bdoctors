@@ -171,6 +171,6 @@ class UserController extends Controller
 
             Storage::delete($cv);
         }
-        return redirect()->route('welcome');
+        return redirect('/');
     }
 }
