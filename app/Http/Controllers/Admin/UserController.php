@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
+
 class UserController extends Controller
 {
     /**
@@ -27,7 +28,14 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        
+        $doctor = User::where('id', Auth::user()->id)->first();
+        if(!$doctor->cv || !$doctor->image || !$doctor->services || !$doctor->phone){
+
+            return view('admin.users.create', compact('doctor')); 
+        }else{
+            return redirect()->route('admin.home', compact('doctor'))->with('Profilo già creato');
+        }
     }
 
     /**
@@ -36,9 +44,31 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
-        //
+        $data = $request->all();
+        $doctor = User::where('id', Auth::user()->id)->first();
+        $request->validate(
+            [
+                'services' => 'nullable|min:1',
+                'phone' => 'nullable|min:2',
+                'image' => 'nullable|mimes:png,jpg,jpeg,svg|max:4096',
+                'cv' => 'nullable|mimes:pdf|max:4096',
+
+            ]
+        );
+        if(array_key_exists('services', $data)){
+            $doctor->services = $data['services'];
+        }
+        if(array_key_exists('phone', $data)){
+            $doctor->phone = $data['phone'];
+        }
+        $doctor->save();
+        return redirect()->route('admin.home',$doctor);
+
+        
+        // $doctor->services = $data['services'];
+        // $doctor->services = $data['services'];
     }
 
     /**
@@ -61,9 +91,10 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit()
     {
-        //
+        $doctor = User::where('id', Auth::user()->id)->first();
+        return view('admin.users.edit', compact('doctor'));
     }
 
     /**

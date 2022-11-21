@@ -14,12 +14,11 @@ class StarSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i=0; $i <50 ; $i++) { 
-            $star = new Star();
-        
-            $star->vote = $faker->numberBetween(1, 5);
-        
-            $star->save();
+        $stars = [1,2,3,4,5];
+        foreach( $stars as $star){
+            $new_star = new Star();
+            $new_star->vote = $star;
+            $new_star->save();
         }
-    }
+}
 }

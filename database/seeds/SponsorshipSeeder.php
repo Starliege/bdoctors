@@ -16,53 +16,71 @@ class SponsorshipSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        //
-        // $dateNow = Carbon::now();
-        // $dateNowFormat = $dateNow->format('d-m-Y H:i');
-        // $date5YrsAgo = Carbon::now()->subYears(5);
-        // $date5YrsAgoFormat = $date5YrsAgo->format('d-m-Y H:i');
-        // 
-        // for ($i=0, $i<25; $i++;) {
-        //     $start_adv = $faker->dateTimeBetween($date5YrsAgoFormat, $dateNowFormat);
-        //     $sponsorship = new Sponsorship();
-        //     $sponsorship->start_adv = $start_adv;
-        //     $carbon_date = Carbon::parse($start_adv);
-        //     $sponsorship->end_adv = $carbon_date->addHours(12);
-        //     
-        //     $sponsorship->save();
-        // }
+
         $sponsors = [
-                ['type'=> 'Bronze',
-                'price'=> 2.99,
-                'hours'=> 24],
+            [
+                'type' => 'Bronze',
+                'price' => 2.99,
+                'hours' => 24
+            ],
 
-                ['type'=> 'Silver',
-                'price'=> 5.99,
-                'hours'=> 72],
+            [
+                'type' => 'Silver',
+                'price' => 5.99,
+                'hours' => 72
+            ],
 
-                ['type'=> 'Gold',
-                'price'=> 9.99,
-                'hours'=> 144],
-             ];
-
-        $user = User::all()->pluck('id');
-        for ($d = 0; $d < 25; $d++) {
-            $advs = $sponsors[rand(0, 2)];
+            [
+                'type' => 'Gold',
+                'price' => 9.99,
+                'hours' => 144
+            ],
+        ];
+        $u = [];
+        foreach ($sponsors as $sponsor) {
             $sponsorship = new Sponsorship();
-            $sponsorship -> type = $advs['type'];
-            $sponsorship -> price = $advs['price'];
-            $sponsorship -> hours = $advs['hours'];
+            $sponsorship->type = $sponsor['type'];
+            $sponsorship->price = $sponsor['price'];
+            $sponsorship->hours = $sponsor['hours'];
+            $sponsorship->save();
+        }
+        for($t = 0; $t < rand(10,20); $t++){
+            $user = User::all()->pluck('id'); 
+            $u = User::all()->pluck('id');
+            $dateS = Carbon::now();
+            $dateE = Carbon::now()->addHour($sponsorship->hours);
+            $userIds = $u->shuffle()->take(1)->all();
+            $sponsorship->users()->attach($userIds, [
+                'start_adv' => $dateS,
+                'end_adv' => $dateE,
+            ]);
+            $u->forget($userIds);
+        
+        }
+        for ($j = 0; $j < rand(50, 200); $j++) {
+                $user = User::all()->pluck('id');
+                $dateStart = Carbon::today()->subDays(rand(0,30))->addSeconds(rand(0,86400));
+                $dateExpiration = Carbon::parse($dateStart)->addHour($sponsorship->hours); 
+                $userIds = $user->shuffle()->take(1)->all();
+                if($dateExpiration < Carbon::now()){
+                    $sponsorship->users()->attach($userIds, [
+                        'start_adv' => $dateStart,
+                        'end_adv' => $dateExpiration,
+                    ]);
 
-            $sponsorship -> save();
+                }
 
-            $dateNow = Carbon::now();
-            $dateExpiration = Carbon::now()->addHour($advs['hours']);
+               
+            
+        }
+        
+            
+        }
+    }
+  
 
-            $userIds = $user[$d];
-            $sponsorship->users()->attach($userIds,[
-                     'start_adv' => $dateNow,
-                     'end_adv' => $dateExpiration,
-                 ]);
+
+
             // for ($j = 0; $j < 25; $j++) {
             //     $userIds = $user[$j];
             //     $sponsorship->users()->attach($userIds,[
@@ -84,5 +102,3 @@ class SponsorshipSeeder extends Seeder
                 // $carbon_date = Carbon::parse($start_adv);
                 // $sponsorship->end_adv = $carbon_date->addHours(12);
                 // }
-    }       }
-}

@@ -14,11 +14,13 @@ class CreateStarUserTable extends Migration
     public function up()
     {
         Schema::create('star_user', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('star_id');
             $table->foreign('star_id')->references('id')->on('stars')->onDelete('cascade');
-            $table->primary(['user_id', 'star_id']);
+            
+            
         });
     }
 
