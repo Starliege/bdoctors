@@ -4,7 +4,6 @@ use Carbon\Carbon;
 $dates = [];
 if(count($doctor->sponsorships) > 0){
             $docSponsorships = $doctor->sponsorships()->get();
-            // $docSponsorships[0]->pivot->end_adv;
             foreach ($docSponsorships as $s){
                 array_push($dates,$s->pivot->end_adv,);
             }
@@ -40,7 +39,7 @@ if(count($doctor->sponsorships) > 0){
                 </div>
 
                 <div class="card mt-5 overflow-hidden ">
-                    <div class="card-header text-center">{{ $doctor->name }} {{ $doctor->surname }}  @if(count($doctor->sponsorships) > 0  && $lastSponsorship < Carbon::now())
+                    <div class="card-header text-center">{{ $doctor->name }} {{ $doctor->surname }}  @if(count($doctor->sponsorships) > 0  && $lastSponsorship > Carbon::now())
                         <span class="badge badge-secondary">hai una sponsorizzazione attiva</span>
                         @endif </div>
                    
