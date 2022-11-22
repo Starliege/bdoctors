@@ -19,6 +19,7 @@ class CreateStarUserTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('star_id');
             $table->foreign('star_id')->references('id')->on('stars')->onDelete('cascade');
+            $table->timestamps();
             
             
         });

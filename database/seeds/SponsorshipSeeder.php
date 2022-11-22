@@ -59,7 +59,7 @@ class SponsorshipSeeder extends Seeder
         }
         for ($j = 0; $j < rand(50, 200); $j++) {
                 $user = User::all()->pluck('id');
-                $dateStart = Carbon::today()->subDays(rand(0,30))->addSeconds(rand(0,86400));
+                $dateStart = Carbon::today()->subDays(rand(7,300))->addSeconds(rand(0,86400));
                 $dateExpiration = Carbon::parse($dateStart)->addHour($sponsorship->hours); 
                 $userIds = $user->shuffle()->take(1)->all();
                 if($dateExpiration < Carbon::now()){

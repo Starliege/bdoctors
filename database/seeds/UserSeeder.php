@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Specialization;
 use Faker\Generator as Faker;
 use App\Star;
+use Carbon\Carbon;
 
 class UserSeeder extends Seeder
 {
@@ -38,9 +39,12 @@ class UserSeeder extends Seeder
             $new_doctor->save();
             $specializationIds = $specialization->shuffle()->take(rand(1,4))->all();
             $new_doctor->specializations()->sync($specializationIds);
-            for($j = 0; $j < rand(1,20); $j++) {
+            for($j = 0; $j < rand(0,50); $j++) {
             $starIds = $star->shuffle()->take(1)->all();
-            $new_doctor->stars()->attach($starIds);
+            $date = Carbon::today()->subDays(rand(2,365))->addSeconds(rand(0,86400));
+            $new_doctor->stars()->attach($starIds, [
+                'created_at' => $date
+            ]);
             }
         }
     }
