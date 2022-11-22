@@ -66,9 +66,7 @@
                                     </form>
                                 </div>
                             </li>
-                            {{-- <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.users.show') }}">Il tuo Profilo</a>
-                            </li>  --}}
+                            
                         @endguest
                     </ul>
                 </div>

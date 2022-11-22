@@ -1,7 +1,20 @@
 @extends('layouts.app')
 <?php
-// foreach($doctor->stars as $s)
-//     dd( $doctor->stars()->find($s->pivot->star_id)->vote )
+use Carbon\Carbon;
+$dates = [];
+if(count($doctor->sponsorships) > 0){
+            $docSponsorships = $doctor->sponsorships()->get();
+            // $docSponsorships[0]->pivot->end_adv;
+            foreach ($docSponsorships as $s){
+                array_push($dates,$s->pivot->end_adv,);
+            }
+            asort($dates);
+            $lastSponsorship = $dates[0];
+            if($lastSponsorship < Carbon::now()){
+                
+            }
+
+        }
 ?>
 @section('content')
     <div class="container">
@@ -27,8 +40,10 @@
                 </div>
 
                 <div class="card mt-5 overflow-hidden ">
-                    <div class="card-header text-center">{{ $doctor->name }} {{ $doctor->surname }}</div>
-
+                    <div class="card-header text-center">{{ $doctor->name }} {{ $doctor->surname }}  @if(count($doctor->sponsorships) > 0  && $lastSponsorship < Carbon::now())
+                        <span class="badge badge-secondary">hai una sponsorizzazione attiva</span>
+                        @endif </div>
+                   
                     <div class="d-flex flex-row">
                         @if ($doctor->image)
                             <div class="card " style="width: 50%">
@@ -68,13 +83,16 @@
                                     <a class="btn btn-primary " href="{{ route('admin.users.create', $doctor) }}"
                                         role="button">Completa il tuo profilo da medico</a>
                                 @endif
+                                <a class="btn btn-warning" href="{{ route('admin.sponsorships.create', $doctor) }}"
+                                    role="button">Boost 
+                                </a>
                                 <a class="btn btn-success" href="{{ route('admin.users.edit', $doctor) }}"
-                                    role="button">Modifica</a>
-
+                                    role="button">Modifica
+                                </a>
                                 <form action="{{ route('admin.users.destroy', $doctor) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <input type="submit" value=" CANCELLA " class="btn btn-danger mt-3">
+                                    <input type="submit" value=" CANCELLA " class="btn btn-danger">
                                 </form>
                             </div>
                         </div>
@@ -133,7 +151,7 @@
 
                     </div>
                 @endif
-                
+
                 @if (count($stars) > 0)
                     <h2 class="text-center mt-5 mb-5">Statistiche Voti :</h2>
                     <table class="table">
@@ -150,7 +168,7 @@
                                 <tr>
                                     <td>{{ $month['Mese'] }}</td>
                                     <td>{{ $month['Numero di voti'] }}</td>
-                                    <td>{{ round(($month['Media voti']/$month['Numero di voti']),2) }}</td>
+                                    <td>{{ round($month['Media voti'] / $month['Numero di voti'], 2) }}</td>
 
                                 </tr>
                             @endforeach
