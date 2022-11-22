@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
             $new_doctor->save();
             $specializationIds = $specialization->shuffle()->take(rand(1,4))->all();
             $new_doctor->specializations()->sync($specializationIds);
-            for($j = 0; $j < rand(0,50); $j++) {
+            for($j = 0; $j < rand(30,70); $j++) {
             $starIds = $star->shuffle()->take(1)->all();
             $date = Carbon::today()->subDays(rand(2,365))->addSeconds(rand(0,86400));
             $new_doctor->stars()->attach($starIds, [

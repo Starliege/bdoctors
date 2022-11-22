@@ -16,7 +16,7 @@ class ReviewSeeder extends Seeder
     public function run(Faker $faker)
     {
         $user = user::all()->pluck('id');
-        for ($i = 0; $i < 400; $i++) {
+        for ($i = 0; $i < 1000; $i++) {
             $date = Carbon::today()->subDays(rand(7,300))->addSeconds(rand(0,86400));
             $new_review = new Review();
             $new_review -> name_reviewer = $faker->firstName();

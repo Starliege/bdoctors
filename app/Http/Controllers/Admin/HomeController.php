@@ -87,7 +87,7 @@ class HomeController extends Controller
             } elseif ($month == 'Mar') {
                 $votesByMonth['Marzo'] = [
                     'Mese' => 'Marzo',
-                    'numero di voti' => $marCount++,
+                    'Numero di voti' => $marCount++,
                     'Media voti' => $totalMar +=  $doctor->stars()->find($star->pivot->star_id)->vote
                 ];
             } elseif ($month == 'Apr') {
@@ -187,7 +187,7 @@ class HomeController extends Controller
                     
                 ];
             } elseif ($monthMsg == 'May') {
-                $votesByMonth['Maggio'] = [
+                $messagesByMonth['Maggio'] = [
                     'Mese' => 'Maggio',
                     'Numero di messaggi' => $mayMsgCount++,
                     
@@ -205,7 +205,7 @@ class HomeController extends Controller
                    
                 ];
             } elseif ($monthMsg == 'Aug') {
-                $votesByMonth['Agosto'] = [
+                $messagesByMonth['Agosto'] = [
                     'Mese' => 'Agosto',
                     'Numero di messaggi' => $agoMsgCount++,
                     
@@ -253,67 +253,67 @@ class HomeController extends Controller
         $decRevCount = 1;
         foreach ($reviews as $review) {
             $dateRev = new Carbon($review->created_at);
-            $monthMsg = $dateMsg->format('M');
-            if ($monthMsg == 'Jan') {
+            $monthRev = $dateRev->format('M');
+            if ($monthRev == 'Jan') {
                 $reviewsByMonth['Gennaio'] = [
                     'Mese' => 'Gennaio',
                     'Numero di recensioni' => $genRevCount++
                 ];
-            } elseif ($monthMsg == 'Feb') {
+            } elseif ($monthRev == 'Feb') {
                 $reviewsByMonth['Febbraio'] = [
                     'Mese' => 'Febbraio',
                     'Numero di recensioni' => $febRevCount++,
                     
                 ];
-            } elseif ($monthMsg == 'Mar') {
+            } elseif ($monthRev == 'Mar') {
                 $reviewsByMonthh['Marzo'] = [
                     'Mese' => 'Marzo',
                     'Numero di recensioni' => $marRevCount++,
                    
                 ];
-            } elseif ($monthMsg == 'Apr') {
+            } elseif ($monthRev == 'Apr') {
                 $reviewsByMonth['Aprile'] = [
                     'Mese' => 'Aprile',
                     'Numero di recensioni' => $aprRevCount++,
                     
                 ];
-            } elseif ($monthMsg == 'May') {
+            } elseif ($monthRev == 'May') {
                 $reviewsByMonth['Maggio'] = [
                     'Mese' => 'Maggio',
                     'Numero di recensioni' => $mayRevCount++,
                     
                 ];
-            } elseif ($monthMsg == 'Jun') {
+            } elseif ($monthRev == 'Jun') {
                 $reviewsByMonth['Giugno'] = [
                     'Mese' => 'Giugno',
                     'Numero di recensioni' => $junRevCount++,
                   
                 ];
-            } elseif ($monthMsg == 'Jul') {
+            } elseif ($monthRev == 'Jul') {
                 $reviewsByMonth['Luglio'] = [
                     'Mese' => 'Luglio',
                     'Numero di recensioni' => $julRevCount++,
                    
                 ];
-            } elseif ($monthMsg == 'Aug') {
+            } elseif ($monthRev == 'Aug') {
                 $reviewsByMonth['Agosto'] = [
                     'Mese' => 'Agosto',
                     'Numero di recensioni' => $agoRevCount++,
                     
                 ];
-            } elseif ($monthMsg == 'Sep') {
+            } elseif ($monthRev == 'Sep') {
                 $reviewsByMonth['Settembre'] = [
                     'Mese' => 'Settembre',
                     'Numero di recensioni' => $sepRevCount++,
                    
                 ];
-            } elseif ($monthMsg == 'Oct') {
+            } elseif ($monthRev == 'Oct') {
                 $reviewsByMonth['Ottobre'] = [
                     'Mese' => 'Ottobre',
                     'Numero di recensioni' => $ottRevCount++,
                    
                 ];
-            } elseif ($monthMsg == 'Nov') {
+            } elseif ($monthRev == 'Nov') {
                 $reviewsByMonth['Novembre'] = [
                     'Mese' => 'Novembre',
                     'Numero di recensioni' => $novRevCount++,

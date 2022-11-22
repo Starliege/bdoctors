@@ -15,7 +15,7 @@ class MessageSeeder extends Seeder
     public function run(Faker $faker)
     {
         $user = user::all()->pluck('id');
-        for ($i = 0; $i < 400; $i++) {
+        for ($i = 0; $i < 1000; $i++) {
             $new_message = new Message();
             $date = Carbon::today()->subDays(rand(7,300))->addSeconds(rand(0,86400));
             $new_message -> name_sender = $faker->firstName();
