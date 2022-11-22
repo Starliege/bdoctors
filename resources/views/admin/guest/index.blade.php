@@ -6,6 +6,11 @@
 
 @section('content')
 
+<div class="jumbotron">
+    <h1 class="display-4 text-center">Bdoctors</h1>
+    <hr class="my-4">
+</div>
+
 <div class="container">
     <div class="row">
       <div class="col-8">
