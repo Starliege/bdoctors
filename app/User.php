@@ -40,7 +40,7 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Specialization');
     }
     public function stars(){
-        return $this->belongsToMany('App\Star');
+        return $this->belongsToMany('App\Star')->withTimestamps();
     }
     public function sponsorships(){
         return $this->belongsToMany('App\Sponsorship');
