@@ -54,7 +54,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:100'],
             'surname' => ['required', 'string', 'max:100'],
             'address' => ['required', 'string', 'max:255'],
-            'specialization' => ['required', 'string', 'max:255'],
+            'specialization' => ['required', 'array', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -69,17 +69,19 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $new_doctor = new User();
-        $new_specialization = new Specialization();
-        $new_specialization->specialization = $data['specialization'];
         $new_doctor->name = $data['name'];
         $new_doctor->surname = $data['surname'];
         $new_doctor->address = $data['address'];
         $new_doctor->email = $data['email'];
         $new_doctor->password = Hash::make($data['password']);
         $new_doctor->save();
-        $new_specialization->save();
-        // $new_doctor->specializations()->sync($data['specializations']);
-        $new_doctor->specializations()->sync($new_specialization->id);
+        foreach($data['specialization'] as $key => $s){
+            $new_specialization = new Specialization();
+            $new_specialization->specialization = $s;
+            $new_specialization->save();
+            $new_doctor->specializations()->attach($new_specialization->id);
+
+        }
         return $new_doctor;
     }
 }
