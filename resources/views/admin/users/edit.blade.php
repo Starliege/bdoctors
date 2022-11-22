@@ -85,7 +85,6 @@ $specializations = [
     'Terapista Del Dolore',
     'Urologo',
 ];
-
 ?>
 
 @section('content')
