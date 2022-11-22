@@ -77,6 +77,7 @@
 
         <main class="py-4">
             @yield('content')
+            @yield('guestcontent')
         </main>
     </div>
 </body>
