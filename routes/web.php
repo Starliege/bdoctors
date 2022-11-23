@@ -21,6 +21,8 @@ Route::get('/show/{id}', 'GuestController@show')->name('show');
 
 Route::resource('reviews', 'ReviewController');
 
+Route::resource('messages', 'MessageController');
+
 Auth::routes();
 
 Route::middleware('auth')
