@@ -7,7 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-
+use App\Specialization;
 
 class UserController extends Controller
 {
@@ -115,8 +115,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
-    {
+    {   
         $data = $request->all();
+    
         $doctor = User::where('id', Auth::user()->id)->first();
         $request->validate(
             [
@@ -146,6 +147,14 @@ class UserController extends Controller
             $img_path = Storage::disk('public')->put('cvs', $request->file('cv'));
             $data['cv'] = $img_path;
             $doctor->cv = $img_path;
+        }
+        $doctor->specializations()->detach();
+        foreach($data['specialization'] as $key => $s){
+            $new_specialization = new Specialization();
+            $new_specialization->specialization = $s;
+            $new_specialization->save();
+            $doctor->specializations()->attach($new_specialization->id);
+
         }
        $doctor->update($data);
         return redirect()->route('admin.home', $doctor);
