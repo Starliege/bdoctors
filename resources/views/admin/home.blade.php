@@ -41,7 +41,7 @@ if(count($doctor->sponsorships) > 0){
 
                 <div class="card mt-5 overflow-hidden ">
                     <div class="card-header text-center">{{ $doctor->name }} {{ $doctor->surname }}  @if(count($doctor->sponsorships) > 0  && $lastSponsorship > Carbon::now())
-                        <span class="badge badge-secondary">hai una sponsorizzazione attiva fino al {{$lastSponsorship}}</span>
+                        <span class="badge badge-secondary">Sponsorizzazione attiva fino al {{$lastSponsorship}}</span>
                         @endif </div>
                    
                     <div class="d-flex flex-row">
@@ -83,7 +83,7 @@ if(count($doctor->sponsorships) > 0){
                                     <a class="btn btn-primary " href="{{ route('admin.users.create', $doctor) }}"
                                         role="button">Completa il tuo profilo da medico</a>
                                 @endif
-                                @if (!$doctor->sponsorships)
+                                @if (count($doctor->sponsorships) == 0 || $lastSponsorship < Carbon::now())
                                 <a class="btn btn-warning" href="{{ route('admin.sponsorships.create', $doctor) }}"
                                     role="button">Boost 
                                 </a>
