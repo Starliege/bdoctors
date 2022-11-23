@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','GuestController@index')->name('index');
+
+Route::get('/show/{id}', 'GuestController@show')->name('show');
+
+// Route::post('/store', 'ReviewController@store')->name('store');
+
+Route::resource('reviews', 'ReviewController');
 
 Auth::routes();
 
