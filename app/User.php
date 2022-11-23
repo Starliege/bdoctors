@@ -43,7 +43,7 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Star')->withTimestamps();
     }
     public function sponsorships(){
-        return $this->belongsToMany('App\Sponsorship');
+        return $this->belongsToMany('App\Sponsorship')->withPivot('start_adv', 'end_adv', 'id');
     }
     public function reviews(){
         return $this->hasMany('App\Review');

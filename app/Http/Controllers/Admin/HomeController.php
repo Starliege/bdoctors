@@ -36,7 +36,7 @@ class HomeController extends Controller
         $stars = $doctor->stars()->orderBy('created_at', 'DESC')->get();
         $votesMonth = $doctor->stars->all();
         $votes = $doctor->stars->pluck('vote')->all();
-        $avg = round(array_sum($votes) / count($votes), 2);
+        // $avg = round(array_sum($votes) / count($votes), 2);
 
 
         //    sezione voti mensili 
@@ -334,7 +334,7 @@ class HomeController extends Controller
 
 
         $user = Auth::user();
-        return view('admin.home', compact('doctor', 'user', 'messages', 'reviews', 'stars', 'avg','votesByMonth', 'reviewsByMonth', 'messagesByMonth'));
+        return view('admin.home', compact('doctor', 'user', 'messages', 'reviews', 'stars','votesByMonth', 'reviewsByMonth', 'messagesByMonth'));
     }
 
 
