@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\User;
+
 use App\Review;
-use App\Specialization;
+use App\User;
 use Illuminate\Http\Request;
 
-class GuestController extends Controller
+class ReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,7 @@ class GuestController extends Controller
      */
     public function index()
     {
-        $specializations = Specialization::all();
-        $users = User::orderBy('id', 'desc')->with('specializations')->get();
-        
-        return view('admin.guest.index', compact('users', 'specializations'));
+        //
     }
 
     /**
@@ -37,9 +34,32 @@ class GuestController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
-        //
+        
+        $data = $request->all();
+        // dd($data);
+       $params = $request->validate([
+         'name_reviewer'=>'required|min:3',
+         'surname_reviewer'=>'required|min:3',
+         'review'=>'required|min:3',
+         'user_id'=>'required|exists:users,id'
+       ]); 
+       $user = User::findOrFail($data['user_id']);
+       $review = new Review();
+       $review->name_reviewer = $data['name_reviewer'];
+       $review->surname_reviewer = $data['surname_reviewer'];
+       $review->review = $data['review'];
+       $review->user_id = $data['user_id'];
+
+       $review->save();
+
+       return redirect()->route('show', $user );
+    //    $review = Review::create($params);
+    // //    if($review) {
+    //      return redirect()->route('show', $review );
+       
+
     }
 
     /**
@@ -50,10 +70,7 @@ class GuestController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
-        $reviews = Review::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
-
-        return view('admin.guest.show', compact('user', 'reviews'));
+        //
     }
 
     /**

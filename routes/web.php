@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/','GuestController@index')->name('index');
+
+Route::get('/show/{id}', 'GuestController@show')->name('show');
+
+// Route::post('/store', 'ReviewController@store')->name('store');
+
+Route::resource('reviews', 'ReviewController');
 
 
 

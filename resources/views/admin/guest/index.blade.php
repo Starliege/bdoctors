@@ -11,7 +11,7 @@
     <hr class="my-4">
 </div>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
       <div class="col-8">
         <h1>Elenco di dottori:</h1>
@@ -29,6 +29,7 @@
               <th scope="col">#</th>
               <th scope="col">Nome</th>
               <th scope="col">Cognome</th>
+              <th scope="col">Specializazione</th>
               <th scope="col">Email</th>
               <th scope="col">Indirizzo</th>
               <th scope="col">Numero Telefono</th>
@@ -43,10 +44,18 @@
                 <th scope="row">{{ $user->id }}</th>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->surname }}</td>
+                <td>
+                    @foreach ($user->specializations as $specialization)
+                    {{ $specialization->specialization }},
+                    @endforeach
+                </td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->address }}</td>
                 <td>{{ $user->phone }}</td>
                 <td>{{ $user->services }}</td>
+                <td>
+                   <a href="{{ route('show', $user) }}" type="button" class="btn btn-success btn-sm">Visualizza Profilo</a>
+                </td>
               
             </tr>
                 
@@ -54,6 +63,9 @@
           
           </tbody>
         </table>
+
+       
+
       </div>
     </div>
   </div>
