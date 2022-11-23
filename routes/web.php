@@ -23,6 +23,12 @@ Route::resource('reviews', 'ReviewController');
 
 Route::resource('messages', 'MessageController');
 
+Route::resource('stars', 'StarController');
+
+
+
+
+
 Auth::routes();
 
 Route::middleware('auth')
