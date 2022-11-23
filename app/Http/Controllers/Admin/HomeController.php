@@ -327,14 +327,14 @@ class HomeController extends Controller
                 ];
             }
         }
-
+        $stats = array_replace_recursive($votesByMonth, $reviewsByMonth,$messagesByMonth);
 
 
         
 
 
         $user = Auth::user();
-        return view('admin.home', compact('doctor', 'user', 'messages', 'reviews', 'stars','votesByMonth', 'reviewsByMonth', 'messagesByMonth'));
+        return view('admin.home', compact('doctor', 'user', 'messages', 'reviews', 'stars','stats'));
     }
 
 

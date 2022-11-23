@@ -14,6 +14,8 @@ if(count($doctor->sponsorships) > 0){
             }
 
         }
+
+    
        
 ?>
 @section('content')
@@ -41,7 +43,7 @@ if(count($doctor->sponsorships) > 0){
 
                 <div class="card mt-5 overflow-hidden ">
                     <div class="card-header text-center">{{ $doctor->name }} {{ $doctor->surname }}  @if(count($doctor->sponsorships) > 0  && $lastSponsorship > Carbon::now())
-                        <span class="badge badge-secondary">hai una sponsorizzazione attiva fino al {{$lastSponsorship}}</span>
+                        <span class="badge badge-secondary">Sponsorizzazione attiva fino al {{$lastSponsorship}}</span>
                         @endif </div>
                    
                     <div class="d-flex flex-row">
@@ -83,7 +85,7 @@ if(count($doctor->sponsorships) > 0){
                                     <a class="btn btn-primary " href="{{ route('admin.users.create', $doctor) }}"
                                         role="button">Completa il tuo profilo da medico</a>
                                 @endif
-                                @if (!$doctor->sponsorships)
+                                @if (count($doctor->sponsorships) == 0 || $lastSponsorship < Carbon::now())
                                 <a class="btn btn-warning" href="{{ route('admin.sponsorships.create', $doctor) }}"
                                     role="button">Boost 
                                 </a>
@@ -154,72 +156,31 @@ if(count($doctor->sponsorships) > 0){
                     </div>
                 @endif
 
-                @if (count($stars) > 0)
-                    <h2 class="text-center mt-5 mb-5">Statistiche Voti :</h2>
+                @if (count($stars) > 0 || count($messages) > 0 || count($reviews) > 0 )
+                    <h2 class="text-center mt-5 mb-5">Statistiche :</h2>
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">Mese</th>
                                 <th scope="col">Numero di Voti</th>
                                 <th scope="col">Media voti</th>
-
+                                <th scope="col">Numero messaggi</th>
+                                <th scope="col">Numero recensioni</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($votesByMonth as $month)
+                            @foreach ($stats as $month)
                                 <tr>
                                     <td>{{ $month['Mese'] }}</td>
-                                    <td>{{ $month['Numero di voti'] }}</td>
-                                    <td>{{ round($month['Media voti'] / $month['Numero di voti'], 2) }}</td>
-
+                                    <td>{{ array_key_exists('Numero di voti',$month) ? $month['Numero di voti'] : '0' }}</td> 
+                                    <td>{{array_key_exists('Numero di voti',$month) ? round($month['Media voti'] / $month['Numero di voti'], 2) : '0' }}</td>
+                                    <td>{{ array_key_exists('Numero di messaggi',$month) ? $month['Numero di messaggi'] : '0' }} </td>  
+                                    <td>{{ array_key_exists('Numero di recensioni',$month) ? $month['Numero di recensioni'] : '0' }} </td> 
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 @endif
-                @if (count($messages) > 0)
-                    <h2 class="text-center mt-5 mb-5">Statistiche Messaggi :</h2>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Mese</th>
-                                <th scope="col">Numero di Messaggi</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($messagesByMonth as $month)
-                                <tr>
-                                    <td>{{ $month['Mese'] }}</td>
-                                    <td>{{ $month['Numero di messaggi'] }}</td>
-
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                @endif
-                @if (count($reviews) > 0)
-                    <h2 class="text-center mt-5 mb-5">Statistiche Recensioni:</h2>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Mese</th>
-                                <th scope="col">Numero di Recensioni</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($reviewsByMonth as $month)
-                                <tr>
-                                    <td>{{ $month['Mese'] }}</td>
-                                    <td>{{ $month['Numero di recensioni'] }}</td>
-
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                @endif
-
             </div>
         </div>
     </div>
