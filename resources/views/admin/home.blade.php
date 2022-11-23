@@ -7,13 +7,14 @@ if(count($doctor->sponsorships) > 0){
             foreach ($docSponsorships as $s){
                 array_push($dates,$s->pivot->end_adv,);
             }
-            asort($dates);
-            $lastSponsorship = $dates[0];
+            sort($dates);
+            $lastSponsorship = $dates[count($dates)-1];
             if($lastSponsorship < Carbon::now()){
                 
             }
 
         }
+       
 ?>
 @section('content')
     <div class="container">
@@ -82,9 +83,11 @@ if(count($doctor->sponsorships) > 0){
                                     <a class="btn btn-primary " href="{{ route('admin.users.create', $doctor) }}"
                                         role="button">Completa il tuo profilo da medico</a>
                                 @endif
+                                @if (!$doctor->sponsorships)
                                 <a class="btn btn-warning" href="{{ route('admin.sponsorships.create', $doctor) }}"
                                     role="button">Boost 
                                 </a>
+                                @endif
                                 <a class="btn btn-success" href="{{ route('admin.users.edit', $doctor) }}"
                                     role="button">Modifica
                                 </a>
