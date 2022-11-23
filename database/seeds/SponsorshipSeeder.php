@@ -43,35 +43,35 @@ class SponsorshipSeeder extends Seeder
             $sponsorship->price = $sponsor['price'];
             $sponsorship->hours = $sponsor['hours'];
             $sponsorship->save();
-        }
-        for($t = 0; $t < rand(10,20); $t++){
-            $user = User::all()->pluck('id'); 
-            $u = User::all()->pluck('id');
-            $dateS = Carbon::now();
-            $dateE = Carbon::now()->addHour($sponsorship->hours);
-            $userIds = $u->shuffle()->take(1)->all();
-            $sponsorship->users()->attach($userIds, [
-                'start_adv' => $dateS,
-                'end_adv' => $dateE,
-            ]);
-            $u->forget($userIds);
-        
-        }
-        for ($j = 0; $j < rand(50, 200); $j++) {
-                $user = User::all()->pluck('id');
-                $dateStart = Carbon::today()->subDays(rand(7,300))->addSeconds(rand(0,86400));
-                $dateExpiration = Carbon::parse($dateStart)->addHour($sponsorship->hours); 
-                $userIds = $user->shuffle()->take(1)->all();
-                if($dateExpiration < Carbon::now()){
-                    $sponsorship->users()->attach($userIds, [
-                        'start_adv' => $dateStart,
-                        'end_adv' => $dateExpiration,
-                    ]);
-
-                }
-
-               
+            for($t = 0; $t < rand(3, 5); $t++){
+                $user = User::all()->pluck('id'); 
+                $u = User::all()->pluck('id');
+                $dateS = Carbon::now();
+                $dateE = Carbon::now()->addHour($sponsorship->hours);
+                $userIds = $u->shuffle()->take(1)->all();
+                $sponsorship->users()->attach($userIds, [
+                    'start_adv' => $dateS,
+                    'end_adv' => $dateE,
+                ]);
+                $u->forget($userIds);
             
+            }
+            for ($j = 0; $j < rand(20, 70); $j++) {
+                    $user = User::all()->pluck('id');
+                    $dateStart = Carbon::today()->subDays(rand(7,300))->addSeconds(rand(0,86400));
+                    $dateExpiration = Carbon::parse($dateStart)->addHour($sponsorship->hours); 
+                    $userIds = $user->shuffle()->take(1)->all();
+                    if($dateExpiration < Carbon::now()){
+                        $sponsorship->users()->attach($userIds, [
+                            'start_adv' => $dateStart,
+                            'end_adv' => $dateExpiration,
+                        ]);
+    
+                    }
+    
+                   
+                
+            }
         }
         
             

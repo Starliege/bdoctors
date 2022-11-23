@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,9 +21,6 @@ Route::get('/show/{id}', 'GuestController@show')->name('show');
 
 Route::resource('reviews', 'ReviewController');
 
-
-
-
 Auth::routes();
 
 Route::middleware('auth')
@@ -36,6 +32,5 @@ Route::middleware('auth')
             // rotta dashboard
             Route::get('/home', 'HomeController@index')->name('home');
             Route::resource('users', 'UserController');
-           
+            Route::resource('sponsorships', 'SponsorshipController');
         });
-
