@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Review;
 use App\Specialization;
+use App\Star;
 use Illuminate\Http\Request;
 
 class GuestController extends Controller
@@ -52,8 +53,9 @@ class GuestController extends Controller
     {
         $user = User::findOrFail($id);
         $reviews = Review::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
-
-        return view('admin.guest.show', compact('user', 'reviews'));
+        $votes = $user->stars->pluck('vote')->all();
+        $avg = round(array_sum($votes) / count($votes), 1);
+        return view('admin.guest.show', compact('user', 'reviews', 'avg'));
     }
 
     /**

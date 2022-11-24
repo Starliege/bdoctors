@@ -28,6 +28,7 @@
               <th scope="col">Indirizzo</th>
               <th scope="col">Numero Telefono</th>
               <th scope="col">Prestazioni</th>
+              <th scope="col">Media Voto</th>
               <th colspan="2"></th>
             </tr>
           </thead>
@@ -41,6 +42,7 @@
                  <td>{{ $user->address }}</td>
                  <td>{{ $user->phone }}</td>
                  <td>{{ $user->services }}</td>
+                 <td>{{ $avg }}</td>
                
              </tr>
 
@@ -61,7 +63,7 @@
             
         @endforelse
     </div>
-
+              {{-- FORM RECENSIONI --}}
     <div class="container-fluid py-5">
         <div class="row">
             <div class="col-6">
@@ -101,26 +103,19 @@
               @csrf
               @method ('POST')
               <h2>Lascia un voto</h2>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="vote" id="1" value="1">
-                <label class="form-check-label" for="user_id">1</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="vote" id="2" value="2">
-                <label class="form-check-label" for="user_id">2</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="vote" id="3" value="3">
-                <label class="form-check-label" for="user_id">3</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="vote" id="4" value="4">
-                <label class="form-check-label" for="user_id">4</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="vote" id="5" value="5">
-                <label class="form-check-label" for="user_id">5</label>
-              </div>
+              <div class="form-row align-items-center">
+                <div class="col-auto my-1">
+                <label class="mr-sm-2 sr-only" for="vote">Inserisci il voto</label>
+                <select name="vote" class="custom-select mr-sm-2 font-weight-bold" id="vote">
+                    <option disabled selected value>Voto</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                </div>
+            </div>
               <span class="col-auto my-1">
                 <input hidden type="number" name="id" value="{{ $user->id }}">
                 <input type="submit" class="btn btn-primary mt-4" value="Invia">
@@ -138,9 +133,9 @@
         <div class="row">
             <div class="col-6">
                 <h3 class="font-weight-bold mb-3">Invia un Messaggio</h3>
-                <form class="border p-4" action="{{ route('messages.create') }}" method="POST">
+                <form class="border p-4" action="{{ route('messages.store') }}" method="POST">
                     @csrf
-                    @method ('POST')
+                    {{-- @method ('POST') --}}
 
                     <div class="form-group font-weight-bold">
                         <label for="name_sender">Inserisci il tuo Nome:</label>                       

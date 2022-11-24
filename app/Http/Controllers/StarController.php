@@ -34,23 +34,41 @@ class StarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, User $user)
+    public function store(Request $request)
+    
     {
-        $data = $request->all();
+        $data= $request->all();
+
         // dd($data);
-       $params = $request->validate([
-         'vote'=>'required',
-         'id'=>'required|exists:users,id'
-       ]); 
-       $user = User::findOrFail($data['id']);
-       $star = new Star();
-       $star->vote = $data['vote'];
-       $star->id = $data['id'];
+        $params = $request->validate([
+            'vote'=>'required',
+            'id'=>'required|exists:users,id'
+          ]);
+        
+        $user = User::where('id', $data['id'])->first();
 
-       $star->save();
+        $user->stars()->attach($data['id'], ['user_id'=> $user->id, 'star_id'=>$data['vote'] ]);
+        $user->save();
 
-       return redirect()->route('index', $user );
+        return redirect()->route('show', $user);
     }
+    // {
+    //     $data = $request->all();
+    //     // dd($data);
+    //    $params = $request->validate([
+    //      'vote'=>'required',
+    //      'id'=>'required|exists:users,id'
+    //    ]); 
+    // //    $user = User::findOrFail($data['id']);
+    //    $star = new Star();
+    //    $star->vote = $data['vote'];
+    //    $star->id = $data['id'];
+
+    //    $star->save();
+
+    //    return redirect()->route('index', $user );
+    // }
+    
 
     /**
      * Display the specified resource.

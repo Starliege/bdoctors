@@ -9,4 +9,10 @@ class Star extends Model
     public function users(){
         return $this->belongsToMany('App\User');
     }
+
+    protected $fillable = [
+        'id',
+        'vote',
+        'user_id',
+    ];
 }
