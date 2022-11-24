@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="jumbotron">
+<div class="jumbotron bg-info">
     <h1 class="display-4 text-center">Bdoctors</h1>
     <h2>Come possiamo Aiutarti?</h2>
     <hr class="my-4">
@@ -24,13 +24,14 @@
     <div class="row">
       @foreach ($users as $user)
       <div class="col">
-            <div class="card" style="width: 18rem;">
-              @if ($user->image)             
-                  <img class="card-img-top" style="aspect-ratio: 16 / 9;" src="{{ asset('Storage/' . $user->image) }}"
-                      alt="immagine {{ $user->name }}">
+            <div class="card mb-5 text-center" style="width: 16rem; height: 500px;"> 
+              @if ($user->image)
+                     <img class="card-img-top " style="width: 16rem; height: 150px;" src="{{ asset('Storage/' . $user->image) }}"
+                         alt="immagine {{ $user->name }}">                               
               @endif
               <div class="card-body">
                 <h2 class="card-title">{{ $user->name }} {{ $user->surname }}</h2>
+                {{-- <hr> --}}
                 @foreach ($user->specializations as $specialization)
                     <p class="card-text">{{ $specialization->specialization }},</p>
                     @endforeach
@@ -44,7 +45,9 @@
               <div class="card-body">
                 <a href="#" class="card-link">{{ $user->phone }}</a>
               </div>
-              <a href="{{ route('show', $user) }}" type="button" class="btn btn-success btn-sm border-dark">Visualizza Profilo</a>
+              <div class="profile-button align-content-center pb-1">
+                <a href="{{ route('show', $user) }}" type="button" class="btn btn-success btn-sm border-dark" style="max-width: 90px">Visualizza Profilo</a>
+              </div>
             </div>
       </div>
       @endforeach
