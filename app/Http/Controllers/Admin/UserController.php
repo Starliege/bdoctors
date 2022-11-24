@@ -104,7 +104,12 @@ class UserController extends Controller
     public function edit()
     {
         $doctor = User::where('id', Auth::user()->id)->first();
-        return view('admin.users.edit', compact('doctor'));
+        if($doctor->id == Auth::user()->id ){
+            return view('admin.users.edit', compact('doctor'));
+
+        }else{
+            return view('welcome');
+        }
     }
 
     /**

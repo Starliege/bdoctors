@@ -73,6 +73,9 @@ if(count($doctor->sponsorships) > 0){
                             @if ($doctor->services)
                                 <p class="card-text"> <strong> Prestazioni: </strong>{{ $doctor->services }}</p>
                             @endif
+                            @if ($doctor->stars)
+                                <p class="card-text"> <strong> Media voto: </strong>{{ $avg}}</p>
+                            @endif
 
 
                             @if ($doctor->cv)
@@ -173,7 +176,7 @@ if(count($doctor->sponsorships) > 0){
                                 <tr>
                                     <td>{{ $month['Mese'] }}</td>
                                     <td>{{ array_key_exists('Numero di voti',$month) ? $month['Numero di voti'] : '0' }}</td> 
-                                    <td>{{array_key_exists('Numero di voti',$month) ? round($month['Media voti'] / $month['Numero di voti'], 2) : '0' }}</td>
+                                    <td>{{array_key_exists('Numero di voti',$month) ? round($month['Media voti'] / $month['Numero di voti'], 1) : '0' }}</td>
                                     <td>{{ array_key_exists('Numero di messaggi',$month) ? $month['Numero di messaggi'] : '0' }} </td>  
                                     <td>{{ array_key_exists('Numero di recensioni',$month) ? $month['Numero di recensioni'] : '0' }} </td> 
                                 </tr>

@@ -29,9 +29,9 @@ class UserSeeder extends Seeder
         for ($i = 0; $i < 50; $i++) {
             $new_doctor = new User();
             $new_doctor->name = $faker->firstName();
-            $new_doctor->surname = $faker->lastName();
+            $new_doctor->surname = $faker->unique()->lastName();
             $new_doctor->address = $faker->address();
-            $new_doctor->email = $new_doctor->name . $new_doctor->surname . rand(1, 200) . '@gmail.com';
+            $new_doctor->email = $new_doctor->name . $new_doctor->surname . rand(0, 99) . '@gmail.com';
             $new_doctor->password = Hash::make('socionosnitch');
             $new_doctor->services = $services[rand(0, 2)];
             $new_doctor->phone = $faker->phoneNumber();
