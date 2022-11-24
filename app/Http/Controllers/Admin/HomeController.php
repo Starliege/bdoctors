@@ -36,7 +36,8 @@ class HomeController extends Controller
         $stars = $doctor->stars()->orderBy('created_at', 'DESC')->get();
         $votesMonth = $doctor->stars->all();
         $votes = $doctor->stars->pluck('vote')->all();
-        // $avg = round(array_sum($votes) / count($votes), 2);
+        $avg = round(array_sum($votes) / count($votes), 1);
+
 
 
         //    sezione voti mensili 
@@ -172,67 +173,67 @@ class HomeController extends Controller
                 $messagesByMonth['Febbraio'] = [
                     'Mese' => 'Febbraio',
                     'Numero di messaggi' => $febMsgCount++,
-                    
+
                 ];
             } elseif ($monthMsg == 'Mar') {
                 $messagesByMonth['Marzo'] = [
                     'Mese' => 'Marzo',
                     'Numero di messaggi' => $marMsgCount++,
-                   
+
                 ];
             } elseif ($monthMsg == 'Apr') {
                 $messagesByMonth['Aprile'] = [
                     'Mese' => 'Aprile',
                     'Numero di messaggi' => $aprMsgCount++,
-                    
+
                 ];
             } elseif ($monthMsg == 'May') {
                 $messagesByMonth['Maggio'] = [
                     'Mese' => 'Maggio',
                     'Numero di messaggi' => $mayMsgCount++,
-                    
+
                 ];
             } elseif ($monthMsg == 'Jun') {
                 $messagesByMonth['Giugno'] = [
                     'Mese' => 'Giugno',
                     'Numero di messaggi' => $junMsgCount++,
-                  
+
                 ];
             } elseif ($monthMsg == 'Jul') {
                 $messagesByMonth['Luglio'] = [
                     'Mese' => 'Luglio',
                     'Numero di messaggi' => $julMsgCount++,
-                   
+
                 ];
             } elseif ($monthMsg == 'Aug') {
                 $messagesByMonth['Agosto'] = [
                     'Mese' => 'Agosto',
                     'Numero di messaggi' => $agoMsgCount++,
-                    
+
                 ];
             } elseif ($monthMsg == 'Sep') {
                 $messagesByMonth['Settembre'] = [
                     'Mese' => 'Settembre',
                     'Numero di messaggi' => $sepMsgCount++,
-                   
+
                 ];
             } elseif ($monthMsg == 'Oct') {
                 $messagesByMonth['Ottobre'] = [
                     'Mese' => 'Ottobre',
                     'Numero di messaggi' => $ottMsgCount++,
-                   
+
                 ];
             } elseif ($monthMsg == 'Nov') {
                 $messagesByMonth['Novembre'] = [
                     'Mese' => 'Novembre',
                     'Numero di messaggi' => $novMsgCount++,
-                   
+
                 ];
             } else {
                 $messagesByMonth['Dicembre'] = [
                     'Mese' => 'Dicembre',
                     'Numero di messaggi' => $decMsgCount++,
-                   
+
                 ];
             }
         }
@@ -263,78 +264,75 @@ class HomeController extends Controller
                 $reviewsByMonth['Febbraio'] = [
                     'Mese' => 'Febbraio',
                     'Numero di recensioni' => $febRevCount++,
-                    
+
                 ];
             } elseif ($monthRev == 'Mar') {
                 $reviewsByMonthh['Marzo'] = [
                     'Mese' => 'Marzo',
                     'Numero di recensioni' => $marRevCount++,
-                   
+
                 ];
             } elseif ($monthRev == 'Apr') {
                 $reviewsByMonth['Aprile'] = [
                     'Mese' => 'Aprile',
                     'Numero di recensioni' => $aprRevCount++,
-                    
+
                 ];
             } elseif ($monthRev == 'May') {
                 $reviewsByMonth['Maggio'] = [
                     'Mese' => 'Maggio',
                     'Numero di recensioni' => $mayRevCount++,
-                    
+
                 ];
             } elseif ($monthRev == 'Jun') {
                 $reviewsByMonth['Giugno'] = [
                     'Mese' => 'Giugno',
                     'Numero di recensioni' => $junRevCount++,
-                  
+
                 ];
             } elseif ($monthRev == 'Jul') {
                 $reviewsByMonth['Luglio'] = [
                     'Mese' => 'Luglio',
                     'Numero di recensioni' => $julRevCount++,
-                   
+
                 ];
             } elseif ($monthRev == 'Aug') {
                 $reviewsByMonth['Agosto'] = [
                     'Mese' => 'Agosto',
                     'Numero di recensioni' => $agoRevCount++,
-                    
+
                 ];
             } elseif ($monthRev == 'Sep') {
                 $reviewsByMonth['Settembre'] = [
                     'Mese' => 'Settembre',
                     'Numero di recensioni' => $sepRevCount++,
-                   
+
                 ];
             } elseif ($monthRev == 'Oct') {
                 $reviewsByMonth['Ottobre'] = [
                     'Mese' => 'Ottobre',
                     'Numero di recensioni' => $ottRevCount++,
-                   
+
                 ];
             } elseif ($monthRev == 'Nov') {
                 $reviewsByMonth['Novembre'] = [
                     'Mese' => 'Novembre',
                     'Numero di recensioni' => $novRevCount++,
-                   
+
                 ];
             } else {
                 $reviewsByMonth['Dicembre'] = [
                     'Mese' => 'Dicembre',
                     'Numero di recensioni' => $decRevCount++,
-                   
+
                 ];
             }
         }
-        $stats = array_replace_recursive($votesByMonth, $reviewsByMonth,$messagesByMonth);
-
-
-        
+        $stats = array_replace_recursive($votesByMonth, $reviewsByMonth, $messagesByMonth);
 
 
         $user = Auth::user();
-        return view('admin.home', compact('doctor', 'user', 'messages', 'reviews', 'stars','stats'));
+        return view('admin.home', compact('doctor', 'user', 'messages', 'reviews', 'stars', 'stats', 'avg'));
     }
 
 

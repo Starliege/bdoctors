@@ -85,6 +85,7 @@ $specializations = [
     'Terapista Del Dolore',
     'Urologo',
 ];
+sort($specializations);
 ?>
 
 @section('content')
@@ -176,7 +177,7 @@ $specializations = [
             </div>
         </div>
         @endif
-        @if($doctor->dv)
+        @if($doctor->cv)
         <div class="form-group row">
             <label class="col-md-4 col-form-label text-md-right" for="cv">Cambia il tuo CV</label>
             <div class="col-md-6">
@@ -188,10 +189,16 @@ $specializations = [
 
         <div>
             <H5 class="text-center mb-5"> Modifica le tue specializzazioni:</H5>
+            @error('specialization')
+                                    {{-- <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span> --}}
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
             <div class="form-group row justify-content-center ml-5">
                 @foreach ($specializations as $s)
                     <div class="col-2 ">
-                        <input class="form-check-input  @error('specialization') is-invalid @enderror"
+                        <input class="form-check-input"
                             name="specialization[]" @if (in_array($s, $doctor->specializations->pluck('specialization')->all())) checked @endif type="checkbox"
                             value="{{ $s }}" id="specialization">
                         <label class="form-check-label" for="specialization">
@@ -214,7 +221,7 @@ $specializations = [
 
         </div>
     </form>
-    @if ($errors->any())
+    {{-- @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
@@ -222,7 +229,7 @@ $specializations = [
                 @endforeach
             </ul>
         </div>
-    @endif
+    @endif --}}
 
 
 @endsection

@@ -80,6 +80,7 @@ $specializations = [
     'Terapista Del Dolore',
     'Urologo',
 ];
+sort($specializations);
 ?>
 
 @section('content')
@@ -95,7 +96,7 @@ $specializations = [
 
                             <div class="form-group row">
                                 <label for="name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Nome*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
@@ -112,7 +113,7 @@ $specializations = [
 
                             <div class="form-group row">
                                 <label for="surname"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Cognome') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Cognome*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="surname" type="text"
@@ -129,7 +130,7 @@ $specializations = [
 
                             <div class="form-group row">
                                 <label for="address"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="address" type="text"
@@ -163,32 +164,33 @@ $specializations = [
                                 </div>
                             </div> --}}
                             <div class="container">
-                                <H5 class="text-center">Specializzazioni:</H5>
-                                <div class="form-group row justify-content-center ml-5">
+                                <H5 class="text-center">*Specializzazione/i*</H5>
+                                @error('specialization')
+                                    {{-- <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span> --}}
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+
+                                <div style="height: 200px; overflow-y:scroll"
+                                    class="form-group row justify-content-center ml-5">
                                     @foreach ($specializations as $s)
-                                        <div class="col-4 ">
-                                            <input class="form-check-input  @error('specialization') is-invalid @enderror"
+                                        <div class="col-5 ">
+                                            <input class="form-check-input "
                                                 name="specialization[]" type="checkbox" value="{{ $s }}"
                                                 id="specialization">
                                             <label class="form-check-label" for="specialization">
                                                 {{ $s }}
                                             </label>
-                                            @error('specialization')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-
                                         </div>
                                     @endforeach
-
                                 </div>
 
                             </div>
 
                             <div class="form-group row">
                                 <label for="email"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -205,7 +207,7 @@ $specializations = [
 
                             <div class="form-group row">
                                 <label for="password"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Password*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -222,7 +224,7 @@ $specializations = [
 
                             <div class="form-group row">
                                 <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
@@ -237,6 +239,7 @@ $specializations = [
                                     </button>
                                 </div>
                             </div>
+                            <span><em>campi obbligatori*</em> </span>
                         </form>
                     </div>
                 </div>
