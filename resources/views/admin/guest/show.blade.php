@@ -67,24 +67,40 @@
     <div class="container-fluid py-5">
         <div class="row">
             <div class="col-6">
-                <h3 class="font-weight-bold mb-3">Lascia una recensione</h3>
+                <h3 class="font-weight-bold mb-3">Lascia una Recensione</h3>
                 <form class="border p-4" action="{{ route('reviews.store') }}" method="POST">
                     @csrf
                     @method ('POST')
 
                     <div class="form-group font-weight-bold">
-                        <label for="name_reviewer">Inserisci il tuo Nome:</label>                       
-                        <input type="text" class="form-control" id="name_reviewer" name="name_reviewer" value="{{ old('name_reviewer') }}" placeholder="Nome">
+                        <label for="name_reviewer">Inserisci il tuo Nome: *</label>                       
+                        <input type="text" class="form-control @error('name_reviewer') is-invalid @enderror" id="name_reviewer" name="name_reviewer" value="{{ old('name_reviewer') }}" placeholder="Nome" aria-describedby="helpName_reviewer" >
+                        @error('name_reviewer')
+                           <div id="name_reviewer" class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                     </div>
 
                       <div class="form-group font-weight-bold">
-                        <label for="surname_reviewer">Inserisci il tuo Cognome:</label>
-                        <input type="text" class="form-control" id="surname_reviewer" name="surname_reviewer" value="{{ old('surname_reviewer') }}" placeholder="Cognome">                       
+                        <label for="surname_reviewer">Inserisci il tuo Cognome: *</label>
+                        <input type="text" class="form-control @error('surname_reviewer') is-invalid @enderror" id="surname_reviewer" name="surname_reviewer" value="{{ old('surname_reviewer') }}" placeholder="Cognome" aria-describedby="helpSurname_reviewer">  
+                        @error('surname_reviewer')
+                           <div id="surname_reviewer" class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror                     
                       </div>
 
                     <div class="form-group font-weight-bold">
-                        <label for="review">Inserisci un commento:</label>
-                        <textarea class="form-control" id="review" name="review">{{ old('review') }}</textarea>
+                        <label for="review">Inserisci un Commento: *</label>
+                        <textarea class="form-control @error('review') is-invalid @enderror" id="review" name="review" aria-describedby="helpReview">{{ old('review') }}</textarea>
+                        <p class="text-danger pt-2">Campi Obbligatori *</p>
+                        @error('review')
+                           <div id="review" class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                     </div>
 
                     <input hidden type="number" name="user_id" value="{{ $user->id }}">
@@ -138,23 +154,44 @@
                     {{-- @method ('POST') --}}
 
                     <div class="form-group font-weight-bold">
-                        <label for="name_sender">Inserisci il tuo Nome:</label>                       
-                        <input type="text" class="form-control" id="name_sender" name="name_sender" value="{{ old('name_sender') }}" placeholder="Nome">
+                        <label for="name_sender">Inserisci il tuo Nome: *</label>                       
+                        <input type="text" class="form-control @error('name_sender') is-invalid @enderror" id="name_sender" name="name_sender" value="{{ old('name_sender') }}" placeholder="Nome" aria-describedby="helpName_sender">
+                        @error('name_sender')
+                           <div id="name_sender" class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                     </div>
 
                       <div class="form-group font-weight-bold">
-                        <label for="surname_sender">Inserisci il tuo Cognome:</label>
-                        <input type="text" class="form-control" id="surname_sender" name="surname_sender" value="{{ old('surname_sender') }}" placeholder="Cognome">                       
+                        <label for="surname_sender">Inserisci il tuo Cognome: *</label>
+                        <input type="text" class="form-control @error('surname_sender') is-invalid @enderror" id="surname_sender" name="surname_sender" value="{{ old('surname_sender') }}" placeholder="Cognome" aria-describedby="helpSurname_sender">  
+                        @error('surname_sender')
+                           <div id="surname_sender" class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror                     
                       </div>
 
                       <div class="form-group font-weight-bold">
-                        <label for="mail_sender">Inserisci la tua Email:</label>
-                        <input type="mail" class="form-control" id="mail_sender" name="mail_sender" value="{{ old('mail_sender') }}" placeholder="La Tua Email">                       
+                        <label for="mail_sender">Inserisci la tua Email: *</label>
+                        <input type="mail" class="form-control @error('mail_sender') is-invalid @enderror" id="mail_sender" name="mail_sender" value="{{ old('mail_sender') }}" placeholder="La Tua Email" aria-describedby="helpMail_sender">         
+                        @error('mail_sender')
+                           <div id="mail_sender" class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror              
                       </div>
 
                     <div class="form-group font-weight-bold">
-                        <label for="message_sender">Scrivi un Messaggio</label>
-                        <textarea class="form-control" id="message_sender" name="message_sender">{{ old('message_sender') }}</textarea>
+                        <label for="message_sender">Scrivi un Messaggio *</label>
+                        <textarea class="form-control @error('message_sender') is-invalid @enderror" id="message_sender" name="message_sender" aria-describedby="helpMessage_sender">{{ old('message_sender') }}</textarea>
+                        <p class="text-danger pt-2">Campi Obbligatori *</p>
+                        @error('message_sender')
+                           <div id="message_sender" class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                     </div>
 
                     <input hidden type="number" name="user_id" value="{{ $user->id }}">
