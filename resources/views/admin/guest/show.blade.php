@@ -42,7 +42,7 @@ if(count($user->sponsorships) > 0){
    @endif 
 
   <div class="row justify-content-center">
-    <div class="card mt-5 overflow-hidden ">
+    <div class="card mt-5 overflow-hidden" style="width: 1000px">
       <div class="card-header text-center"> <h3> Dott. {{ $user->name }} {{ $user->surname }} </h3>  @if(count($user->sponsorships) > 0  && $lastSponsorship > Carbon::now())
         <span class="badge badge-warning">ha una sponsorizzazione attiva</span>
         @endif 
@@ -112,7 +112,7 @@ if(count($user->sponsorships) > 0){
                   <div class="row">
                       <div class="col-6">
                           <h3 class="font-weight-bold mb-3 text-center">Lascia una Recensione</h3>
-                          <form class="border p-4" action="{{ route('reviews.store') }}" method="POST">
+                          <form class="border p-4" style="height: 520px" action="{{ route('reviews.store') }}" method="POST">
                               @csrf
                               @method ('POST')
           
@@ -154,7 +154,7 @@ if(count($user->sponsorships) > 0){
                       {{-- FORM MESSAGGI PRIVATI --}}
               <div class="col-6">
                 <h3 class="font-weight-bold mb-3 text-center">Invia un Messaggio Privato</h3>
-                <form class="border p-4" action="{{ route('messages.store') }}" method="POST">
+                <form class="border p-4" style="height: 520px" action="{{ route('messages.store') }}" method="POST">
                     @csrf
                     {{-- @method ('POST') --}}
 
