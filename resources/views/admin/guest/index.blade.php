@@ -8,7 +8,7 @@
 
 <div class="jumbotron bg-info">
     <h1 class="display-4 text-center">Bdoctors</h1>
-    <h2>Come possiamo Aiutarti?</h2>
+    <h2>Come possiamo aiutarti?</h2>
     <hr class="my-4">
 </div>
 
@@ -21,6 +21,11 @@
   </div>
   
   <div class="container-fluid">
+    @if (session('message-success'))
+   <div class="alert alert-success">
+      <h3>Messaggio inviato con successo!</h3>
+   </div>
+    @endif 
     <div class="row">
       @foreach ($users as $user)
       <div class="col">
@@ -38,7 +43,7 @@
                 
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">{{ $user->email }}</li>
+                <a href="#" class="list-group-item">{{ $user->email }}</a>
                 <li class="list-group-item">{{ $user->address }}</li>
                 <li class="list-group-item">{{ $user->services }}</li>
               </ul>

@@ -54,7 +54,7 @@ class ReviewController extends Controller
 
        $review->save();
 
-       return redirect()->route('show', $user );
+       return redirect()->route('show', $user )->with('review-success', $user);
     //    $review = Review::create($params);
     // //    if($review) {
     //      return redirect()->route('show', $review );

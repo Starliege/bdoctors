@@ -108,18 +108,18 @@ if(count($doctor->sponsorships) > 0){
                         @foreach ($messages as $message)
                             <div class="card text-center mb-2 text-wrap">
                                 <div class="card-header">
-                                    Da: {{ $message->name_sender }} {{ $message->surname_sender }}
+                                    <h5>Da: {{ $message->name_sender }} {{ $message->surname_sender }}</h5>
                                 </div>
                                 <div class="card-body">
                                     <p class="card-text">
                                         {{ $message->message_sender }}
                                     </p>
                                     <blockquote class="blockquote mb-0">
-                                        <footer class="blockquote-footer">{{ $message->mail_sender }}</footer>
+                                        <a href="#"><footer class="blockquote-footer">{{ $message->mail_sender }}</footer></a>
                                     </blockquote>
                                 </div>
-                                <div class="card-footer text-muted">
-                                    il: {{ $message->created_at->format('d-m-Y H:m') }}
+                                <div class="card-footer text-white bg-secondary">
+                                    Inviato il: {{ $message->created_at->format('d-m-Y H:m') }}
 
                                 </div>
                             </div>
@@ -135,14 +135,14 @@ if(count($doctor->sponsorships) > 0){
                         @foreach ($reviews as $review)
                             <div class="card text-center mb-2 text-wrap">
                                 <div class="card-header">
-                                    Da: {{ $review->name_reviewer }} {{ $review->surname_reviewer }}
+                                    <h5>Da: {{ $review->name_reviewer }} {{ $review->surname_reviewer }}</h5>
                                 </div>
                                 <div class="card-body">
                                     <p class="card-text">
                                         {{ $review->review }}
                                     </p>
                                 </div>
-                                <div class="card-footer text-muted">
+                                <div class="card-footer text-white bg-secondary">
                                     il: {{ $review->created_at->format('d-m-Y H:m') }}
 
                                 </div>

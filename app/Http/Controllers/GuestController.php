@@ -54,7 +54,11 @@ class GuestController extends Controller
         $user = User::findOrFail($id);
         $reviews = Review::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
         $votes = $user->stars->pluck('vote')->all();
-        $avg = round(array_sum($votes) / count($votes), 1);
+        if( count($votes) > 0) {  
+            $avg = round(array_sum($votes) / count($votes), 1);
+        } else {
+            $avg = 0;
+        }
         return view('admin.guest.show', compact('user', 'reviews', 'avg'));
     }
 
