@@ -28,37 +28,35 @@
     @endif 
     <div class="row">
       @foreach ($users as $user)
-      <div class="col">
-            <div class="card mb-5 text-center" style="width: 16rem; height: 500px;"> 
+       <div class="col">
+        <a href="{{ route('show', $user) }}" style="text-decoration: none;">
+
+          
+            <div class="card mb-5 text-center" style="width: 16rem; height: 450px;"> 
               @if ($user->image)
-                     <img class="card-img-top " style="width: 16rem; height: 150px;" src="{{ asset('Storage/' . $user->image) }}"
-                         alt="immagine {{ $user->name }}">                               
+                <img class="card-img-top " style="width: 16rem; height: 170px;" src="{{ asset('Storage/' . $user->image) }}" alt="immagine {{ $user->name }}">                               
               @endif
+              @if (!$user->image)
+                  <div class="card-img-top" style="width: 16rem; height: 170px;">
+                      <img src="https://www.sketchappsources.com/resources/source-image/doctor-illustration-hamamzai.png" style="width: 16rem; height: 170px;" alt="">
+                  </div>
+              @else
+                  
+              @endif
+              
               <div class="card-body">
                 <h2 class="card-title">{{ $user->name }} {{ $user->surname }}</h2>
-                {{-- <hr> --}}
                 @foreach ($user->specializations as $specialization)
-                    <p class="card-text">{{ $specialization->specialization }},</p>
-                    @endforeach
-                
-              </div>
-              <ul class="list-group list-group-flush">
-                <a href="#" class="list-group-item">{{ $user->email }}</a>
-                <li class="list-group-item">{{ $user->address }}</li>
-                <li class="list-group-item">{{ $user->services }}</li>
-              </ul>
-              <div class="card-body">
-                <a href="#" class="card-link">{{ $user->phone }}</a>
-              </div>
-              <div class="profile-button align-content-center pb-1">
-                <a href="{{ route('show', $user) }}" type="button" class="btn btn-success btn-sm border-dark" style="max-width: 90px">Visualizza Profilo</a>
-              </div>
+                  <p class="card-text">{{ $specialization->specialization }},</p>
+                @endforeach             
+              </div>              
             </div>
-      </div>
+          </a> 
+       </div>
       @endforeach
     </div>
-  
   </div>
 
 @endsection
 
+{{-- <a href="{{ route('show', $user) }}">Visualizza Profilo</a> --}}
