@@ -55,7 +55,7 @@
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
-                text-transform: uppercase;
+                
             }
 
             .m-b-md {
@@ -67,13 +67,18 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        {{-- {{ config('app.name', 'Laravel') }} --}}
+                        Homepage
+                    </a>
+                
                     @auth
                         <a href="{{ route('admin.home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}">{{ __('Accedi') }}</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}">{{ __('Registrati') }}</a>
                         @endif
                     @endauth
                 </div>

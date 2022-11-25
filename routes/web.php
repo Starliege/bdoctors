@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','GuestController@index')->name('index');
+Route::get('/', 'GuestController@index')->name('index');
 
 Route::get('/show/{id}', 'GuestController@show')->name('show');
 
@@ -41,4 +41,9 @@ Route::middleware('auth')
             Route::get('/home', 'HomeController@index')->name('home');
             Route::resource('users', 'UserController');
             Route::resource('sponsorships', 'SponsorshipController');
-        });
+        }
+    );
+
+Route::get('{any?}', function () {
+    return view('guest.home');
+})->where('any', '.*');
