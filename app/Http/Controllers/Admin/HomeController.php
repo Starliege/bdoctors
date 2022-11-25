@@ -36,7 +36,12 @@ class HomeController extends Controller
         $stars = $doctor->stars()->orderBy('created_at', 'DESC')->get();
         $votesMonth = $doctor->stars->all();
         $votes = $doctor->stars->pluck('vote')->all();
-        $avg = round(array_sum($votes) / count($votes), 1);
+        if( count($votes) > 0){
+
+            $avg = round(array_sum($votes) / count($votes), 1);
+        }else{
+            $avg = 0;
+        }
 
 
 

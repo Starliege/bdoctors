@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Specialization;
-
 class UserController extends Controller
 {
     /**
@@ -101,9 +100,19 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit()
-    {
+    public function edit(Request $request )
+    {   
+        
+    
+        
         $doctor = User::where('id', Auth::user()->id)->first();
+        
+        // if(Auth::user()->doctor && Auth::user()->doctor->id == $doctor->id){
+        //     return view('Admin.Doctors.edit', compact('doctor'));
+        //     // return view('Admin.Doctors.edit', compact('doctor', 'specialties'));
+        // } else {
+        //     return redirect()->route('401');
+        // }
         if($doctor->id == Auth::user()->id ){
             return view('admin.users.edit', compact('doctor'));
 
