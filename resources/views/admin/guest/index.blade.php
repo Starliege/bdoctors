@@ -6,68 +6,58 @@
 
 @section('content')
 
-<div class="jumbotron">
+<div class="jumbotron bg-info">
     <h1 class="display-4 text-center">Bdoctors</h1>
+    <h2>Come possiamo aiutarti?</h2>
     <hr class="my-4">
 </div>
 
 <div class="container-fluid">
     <div class="row">
       <div class="col-8">
-        <h1>Elenco di dottori:</h1>
+        <h1 class="py-5">Consulta i nostri Specialisti!</h1>
       </div>
     </div>
   </div>
   
   <div class="container-fluid">
+    @if (session('message-success'))
+   <div class="alert alert-success">
+      <h3>Messaggio inviato con successo!</h3>
+   </div>
+    @endif 
     <div class="row">
-      <div class="col-12">
-        
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Nome</th>
-              <th scope="col">Cognome</th>
-              <th scope="col">Specializazione</th>
-              <th scope="col">Email</th>
-              <th scope="col">Indirizzo</th>
-              <th scope="col">Numero Telefono</th>
-              <th scope="col">Prestazioni</th>
-              <th colspan="2"></th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach ($users as $user)
-            <tr>
-              
-                <th scope="row">{{ $user->id }}</th>
-                <td>{{ $user->name }}</td>
-                <td>{{ $user->surname }}</td>
-                <td>
-                    @foreach ($user->specializations as $specialization)
-                    {{ $specialization->specialization }},
+      @foreach ($users as $user)
+      <div class="col">
+            <div class="card mb-5 text-center" style="width: 16rem; height: 500px;"> 
+              @if ($user->image)
+                     <img class="card-img-top " style="width: 16rem; height: 150px;" src="{{ asset('Storage/' . $user->image) }}"
+                         alt="immagine {{ $user->name }}">                               
+              @endif
+              <div class="card-body">
+                <h2 class="card-title">{{ $user->name }} {{ $user->surname }}</h2>
+                {{-- <hr> --}}
+                @foreach ($user->specializations as $specialization)
+                    <p class="card-text">{{ $specialization->specialization }},</p>
                     @endforeach
-                </td>
-                <td>{{ $user->email }}</td>
-                <td>{{ $user->address }}</td>
-                <td>{{ $user->phone }}</td>
-                <td>{{ $user->services }}</td>
-                <td>
-                   <a href="{{ route('show', $user) }}" type="button" class="btn btn-success btn-sm">Visualizza Profilo</a>
-                </td>
-              
-            </tr>
                 
-            @endforeach
-          
-          </tbody>
-        </table>
-
-       
-
+              </div>
+              <ul class="list-group list-group-flush">
+                <a href="#" class="list-group-item">{{ $user->email }}</a>
+                <li class="list-group-item">{{ $user->address }}</li>
+                <li class="list-group-item">{{ $user->services }}</li>
+              </ul>
+              <div class="card-body">
+                <a href="#" class="card-link">{{ $user->phone }}</a>
+              </div>
+              <div class="profile-button align-content-center pb-1">
+                <a href="{{ route('show', $user) }}" type="button" class="btn btn-success btn-sm border-dark" style="max-width: 90px">Visualizza Profilo</a>
+              </div>
+            </div>
       </div>
+      @endforeach
     </div>
+  
   </div>
 
 @endsection

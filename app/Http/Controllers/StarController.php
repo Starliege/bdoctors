@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\User;
-use App\Review;
-use App\Specialization;
+
 use App\Star;
+use App\User;
 use Illuminate\Http\Request;
 
-class GuestController extends Controller
+class StarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +15,7 @@ class GuestController extends Controller
      */
     public function index()
     {
-        $specializations = Specialization::all();
-        $users = User::orderBy('id', 'desc')->with('specializations')->get();
-        
-        return view('admin.guest.index', compact('users', 'specializations'));
+        //
     }
 
     /**
@@ -39,9 +35,40 @@ class GuestController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+    
     {
-        //
+        $data= $request->all();
+
+        // dd($data);
+        $params = $request->validate([
+            'vote'=>'required',
+            'id'=>'required|exists:users,id'
+          ]);
+        
+        $user = User::where('id', $data['id'])->first();
+
+        $user->stars()->attach($data['id'], ['user_id'=> $user->id, 'star_id'=>$data['vote'] ]);
+        $user->save();
+
+        return redirect()->route('show', $user);
     }
+    // {
+    //     $data = $request->all();
+    //     // dd($data);
+    //    $params = $request->validate([
+    //      'vote'=>'required',
+    //      'id'=>'required|exists:users,id'
+    //    ]); 
+    // //    $user = User::findOrFail($data['id']);
+    //    $star = new Star();
+    //    $star->vote = $data['vote'];
+    //    $star->id = $data['id'];
+
+    //    $star->save();
+
+    //    return redirect()->route('index', $user );
+    // }
+    
 
     /**
      * Display the specified resource.
@@ -51,15 +78,7 @@ class GuestController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
-        $reviews = Review::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
-        $votes = $user->stars->pluck('vote')->all();
-        if( count($votes) > 0) {  
-            $avg = round(array_sum($votes) / count($votes), 1);
-        } else {
-            $avg = 0;
-        }
-        return view('admin.guest.show', compact('user', 'reviews', 'avg'));
+        //
     }
 
     /**

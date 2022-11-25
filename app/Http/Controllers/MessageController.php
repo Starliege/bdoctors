@@ -42,6 +42,7 @@ class MessageController extends Controller
          'name_sender'=>'required|min:3',
          'surname_sender'=>'required|min:3',
          'message_sender'=>'required|min:3',
+         'mail_sender'=>'required|email',
          'user_id'=>'required|exists:users,id'
        ]); 
        $user = User::findOrFail($data['user_id']);
@@ -54,7 +55,7 @@ class MessageController extends Controller
 
        $message->save();
 
-       return redirect()->route('index', $user );
+       return redirect()->route('index', $user )->with('message-success', $user);
     }
 
     /**
