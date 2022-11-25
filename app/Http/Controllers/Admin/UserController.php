@@ -170,6 +170,12 @@ class UserController extends Controller
             $doctor->specializations()->attach($new_specialization->id);
 
         }
+        if (array_key_exists('phone', $data)) {
+           $doctor->phone = $data['phone'];
+        }
+        if (array_key_exists('services', $data)) {
+            $doctor->services = $data['services'];
+         }
        $doctor->update($data);
         return redirect()->route('admin.home', $doctor);
     }
