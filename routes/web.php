@@ -13,7 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'GuestController@index')->name('index');
+// Route::get('/', 'GuestController@index')->name('index');
+
+// rotta per tornare la pagina di vue, ho sositutito riga 16
+// porta alla rotta HOME di vue (lista dei medici)
+Route::get('/', function () {
+    return view('guest.home');
+})->name('guest.home');
+
 
 Route::get('/show/{id}', 'GuestController@show')->name('show');
 
