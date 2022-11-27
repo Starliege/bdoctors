@@ -100,12 +100,13 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request )
+    public function edit($doctor)
     {   
-        
-    
+        $data = $doctor;
         
         $doctor = User::where('id', Auth::user()->id)->first();
+        // dd($data,$doctor);
+        // dd($doctor, Auth::user());
         
         // if(Auth::user()->doctor && Auth::user()->doctor->id == $doctor->id){
         //     return view('Admin.Doctors.edit', compact('doctor'));
@@ -113,11 +114,11 @@ class UserController extends Controller
         // } else {
         //     return redirect()->route('401');
         // }
-        if($doctor->id == Auth::user()->id ){
+        if($data == Auth::user()->id ){
             return view('admin.users.edit', compact('doctor'));
 
         }else{
-            return view('welcome');
+            return redirect()->route('admin.home');
         }
     }
 
