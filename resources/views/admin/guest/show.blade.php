@@ -44,7 +44,7 @@ if(count($user->sponsorships) > 0){
   <div class="row justify-content-center">
     <div class="card mt-5 overflow-hidden" style="width: 1000px">
       <div class="card-header text-center"> <h3> Dott. {{ $user->name }} {{ $user->surname }} </h3>  @if(count($user->sponsorships) > 0  && $lastSponsorship > Carbon::now())
-        <span class="badge badge-warning">ha una sponsorizzazione attiva</span>
+        <span class="badge badge-warning">Utente Sponsorizzato</span>
         @endif 
       </div>
       <div class="d-flex flex-row">

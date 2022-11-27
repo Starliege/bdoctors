@@ -12,6 +12,13 @@
     <hr class="my-4">
 </div>
 
+
+<div class="Info text-center">
+  <p><Strong>Bdoctors</Strong>, Siamo la tua piattaforma numero 1 di ricerca Medici specializzati in tutta Italia.
+    Qui trovi tutto ciò di cui hai bisogno, ti basta cercare! </p>
+  <hr class="my-4">
+</div>
+
 <div class="container-fluid">
     <div class="row">
       <div class="col-8">
@@ -32,22 +39,25 @@
         <a href="{{ route('show', $user) }}" style="text-decoration: none;">
 
           
-            <div class="card mb-5 text-center" style="width: 16rem; height: 450px;"> 
+            <div class="card mb-5 text-center bg-info border-dark" style="height: 450px;"> 
               @if ($user->image)
-                <img class="card-img-top " style="width: 16rem; height: 170px;" src="{{ asset('Storage/' . $user->image) }}" alt="immagine {{ $user->name }}">                               
+              <div class="card-img-top justify-content-center">
+                <img class="card-img-top " style="width: 16rem; height: 170px; margin-top: 14px" src="{{ asset('Storage/' . $user->image) }}" alt="immagine {{ $user->name }}">                               
+              </div>
               @endif
               @if (!$user->image)
-                  <div class="card-img-top" style="width: 16rem; height: 170px;">
-                      <img src="https://www.sketchappsources.com/resources/source-image/doctor-illustration-hamamzai.png" style="width: 16rem; height: 170px;" alt="">
+                  <div class="card-img-top">
+                      <img src="https://www.sketchappsources.com/resources/source-image/doctor-illustration-hamamzai.png" style="width: 16rem; height: 170px; margin-top: 14px" alt="default-avatar">
                   </div>
               @else
                   
               @endif
               
               <div class="card-body">
-                <h2 class="card-title">{{ $user->name }} {{ $user->surname }}</h2>
+                <h2 class="card-title text-dark">{{ $user->name }} {{ $user->surname }}</h2>
+                <hr>
                 @foreach ($user->specializations as $specialization)
-                  <p class="card-text">{{ $specialization->specialization }},</p>
+                  <p class="card-text text-dark">{{ $specialization->specialization }}</p>
                 @endforeach             
               </div>              
             </div>
