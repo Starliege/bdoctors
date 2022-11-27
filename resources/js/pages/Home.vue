@@ -1,13 +1,14 @@
 <template>
   <div>
     <section>
+      <SearchBar></SearchBar>
       <Carousel/>
       <Jumbo/>
         
       
     </section>
     <section>
-      <DoctorList/>
+      
     </section>
   </div>
 </template>
@@ -15,6 +16,7 @@
 import Jumbo from '../components/Jumbo.vue';
 import Carousel from '../components/Carousel.vue';
 import DoctorList from './DoctorList.vue';
+import SearchBar from '../components/SearchBar.vue';
 export default {
   name: 'Home',
 
@@ -22,7 +24,8 @@ export default {
     Jumbo,
     Carousel,
     DoctorList,
-  },
+    SearchBar
+},
 
   data(){
     return{
