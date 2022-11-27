@@ -3,7 +3,6 @@
     <div>
       <Nav/>
     </div>
-    <Home/>
     <router-view></router-view>
     
     <div>
