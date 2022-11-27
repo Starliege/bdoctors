@@ -4,7 +4,11 @@
           
                 <DoctorCard v-for="user in users" :key="user.id" :user="user"  />
             
-           
+           <!-- <ul>
+            <li v-for="spec in user.specializations" :key="spec.id">
+                {{spec.specialization}}
+            </li>
+           </ul> -->
         </section>
     </div>
 </template>

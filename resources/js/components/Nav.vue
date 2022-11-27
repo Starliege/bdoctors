@@ -3,7 +3,8 @@
         <div class="container ">
             <nav>
                 <div class="left home">
-                    <router-link :to="{ name: 'home' }"> Homepage </router-link>
+                    <!-- <router-link :to="{ name: 'home' }"> Homepage </router-link> -->
+                    <a href="/">Home</a>
                     
                     <span>bdoctors</span>
                 </div>

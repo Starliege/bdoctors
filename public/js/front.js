@@ -2229,11 +2229,21 @@ var render = function render() {
     staticStyle: {
       width: "18rem"
     }
-  }, [_c("div", {
+  }, [_vm.user.image ? _c("img", {
+    staticClass: "card-img-top",
+    attrs: {
+      src: "/storage/".concat(_vm.user.image),
+      alt: "..."
+    }
+  }) : _vm._e(), _vm._v(" "), _c("div", {
     staticClass: "card-body"
   }, [_c("h5", {
     staticClass: "card-title"
-  }, [_vm._v(_vm._s(_vm.user.name) + " " + _vm._s(_vm.user.surname))]), _vm._v(" "), _c("ul", [_c("li", [_vm._v("\n                    " + _vm._s(_vm.user["specializations"][0].specialization) + "\n                ")])]), _vm._v(" "), _c("a", {
+  }, [_vm._v(_vm._s(_vm.user.name) + " " + _vm._s(_vm.user.surname))]), _vm._v(" "), _c("ul", _vm._l(_vm.user.specializations, function (specialization) {
+    return _c("li", {
+      key: specialization.id
+    }, [_vm._v("\n                    " + _vm._s(specialization.specialization) + "\n                ")]);
+  }), 0), _vm._v(" "), _c("a", {
     staticClass: "btn btn-primary",
     attrs: {
       href: "#"
@@ -2380,22 +2390,20 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("header", [_c("div", {
-    staticClass: "container"
-  }, [_c("nav", [_c("div", {
-    staticClass: "left home"
-  }, [_c("router-link", {
-    attrs: {
-      to: {
-        name: "home"
-      }
-    }
-  }, [_vm._v(" Homepage ")]), _vm._v(" "), _c("span", [_vm._v("bdoctors")])], 1), _vm._v(" "), _vm._m(0)])])]);
+  return _vm._m(0);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", {
+  return _c("header", [_c("div", {
+    staticClass: "container"
+  }, [_c("nav", [_c("div", {
+    staticClass: "left home"
+  }, [_c("a", {
+    attrs: {
+      href: "/"
+    }
+  }, [_vm._v("Home")]), _vm._v(" "), _c("span", [_vm._v("bdoctors")])]), _vm._v(" "), _c("div", {
     staticClass: "right"
   }, [_c("div", {
     staticClass: "dropdown hamburger menu"
@@ -2436,7 +2444,7 @@ var staticRenderFns = [function () {
     attrs: {
       href: "/login"
     }
-  }, [_vm._v("Accedi")])])])])]);
+  }, [_vm._v("Accedi")])])])])])])])]);
 }];
 render._withStripped = true;
 

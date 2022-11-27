@@ -1,15 +1,15 @@
 <template>
     <div class="col-4">
         <div class="card" style="width: 18rem;">
-            <!-- <img v-if="user.image" :src="user.image" class="card-img-top" alt="..."> -->
+            <img v-if="user.image" :src="`/storage/${user.image}`" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{ user.name }} {{ user.surname }}</h5>
 
                 
               
                 <ul>
-                    <li>
-                        {{user['specializations'][0].specialization}}
+                    <li v-for="specialization in user.specializations" :key="specialization.id">
+                        {{specialization.specialization}}
                     </li>
                 </ul>
             
