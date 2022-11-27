@@ -42,8 +42,8 @@ if(count($doctor->sponsorships) > 0){
                 </div>
 
                 <div class="card mt-5 overflow-hidden ">
-                    <div class="card-header text-center">{{ $doctor->name }} {{ $doctor->surname }}  @if(count($doctor->sponsorships) > 0  && $lastSponsorship > Carbon::now())
-                        <span class="badge badge-secondary">Sponsorizzazione attiva fino al {{$lastSponsorship}}</span>
+                    <div class="card-header text-center"><h1>Dott. {{ $doctor->name }} {{ $doctor->surname }} </h1> @if(count($doctor->sponsorships) > 0  && $lastSponsorship > Carbon::now())
+                        <span class="badge badge-warning">Sponsorizzazione attiva fino al {{$lastSponsorship}}</span>
                         @endif </div>
                    
                     <div class="d-flex flex-row">
@@ -86,7 +86,7 @@ if(count($doctor->sponsorships) > 0){
                             <div class="mt-3 text-center d-flex justify-content-between align-items-center flex-wrap ">
                                 @if (!$doctor->cv || !$doctor->image || !$doctor->services || !$doctor->phone)
                                     <a class="btn btn-primary " href="{{ route('admin.users.create', $doctor) }}"
-                                        role="button">Completa il tuo profilo da medico</a>
+                                        role="button">Completa il tuo profilo da Medico</a>
                                 @endif
                                 @if (count($doctor->sponsorships) == 0 || $lastSponsorship < Carbon::now())
                                 <a class="btn btn-warning" href="{{ route('admin.sponsorships.create', $doctor) }}"
@@ -99,7 +99,7 @@ if(count($doctor->sponsorships) > 0){
                                 <form action="{{ route('admin.users.destroy', $doctor) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <input type="submit" value=" CANCELLA " class="btn btn-danger">
+                                    <input type="submit" value=" CANCELLA " class="btn btn-danger mt-1">
                                 </form>
                             </div>
                         </div>
