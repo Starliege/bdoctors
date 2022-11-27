@@ -25,15 +25,27 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        $r = $request->all();
+        foreach ( $r as $key => $value ) {
+            
+            $data = $key;
+            // dd($key);
+        }
+        // $data = $doctor;
 
         $doctor = User::where('id', Auth::user()->id)->first();
-        if (!$doctor->cv || !$doctor->image || !$doctor->services || !$doctor->phone) {
+        if($data == Auth::user()->id){
+            if (!$doctor->cv || !$doctor->image || !$doctor->services || !$doctor->phone) {
+    
+                return view('admin.users.create', compact('doctor'));
+            } else {
+                return redirect()->route('admin.home', compact('doctor'))->with('Profilo già creato');
+            }
 
-            return view('admin.users.create', compact('doctor'));
-        } else {
-            return redirect()->route('admin.home', compact('doctor'))->with('Profilo già creato');
+        }else{
+            return redirect()->route('admin.home');
         }
     }
 
