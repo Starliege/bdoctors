@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Route::get('/', 'GuestController@index')->name('index');
+// rotta x visualizzare dottori backoffice
+Route::get('/guesthome', 'GuestController@index')->name('index');
 
 // rotta per tornare la pagina di vue, ho sositutito riga 16
 // porta alla rotta HOME di vue (lista dei medici)

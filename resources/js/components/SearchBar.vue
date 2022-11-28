@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="p-5">
     <div>
       <input type="text" v-model="filterText">
       <button @click="filter()">
@@ -8,8 +8,8 @@
       <router-link :to="{ name: 'search', params: { doctors: this.doctorsArray } }">Advanced Search</router-link>
 
     </div>
-    <div class="row">
-      <div v-for="doc in filteredbySpec" class="card">
+    <div class="row py-5">
+      <div v-for="doc in filteredbySpec" class="card mx-3">
         <div class="card-body">
           {{ doc.name }} {{ doc.surname }}
   
