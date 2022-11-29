@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Specialization;
 use Illuminate\Http\Request;
-use App\User;
 
-class UserController extends Controller
+class SpecializationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $result = User::orderBy('created_at', 'desc')->with('specializations', 'stars','sponsorships','reviews')->get();
-        return response()->json(compact('result'));
+        $specializations = Specialization::All();
+        return response()->json($specializations);
     }
 
     /**
