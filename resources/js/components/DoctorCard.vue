@@ -5,14 +5,14 @@
             <div class="card-body">
                 <h5 class="card-title">{{ user.name }} {{ user.surname }}</h5>
 
-                
-              
+
+
                 <ul>
                     <li v-for="specialization in user.specializations" :key="specialization.id">
-                        {{specialization.specialization}}
+                        {{ specialization.specialization }}
                     </li>
                 </ul>
-            
+
                 <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
@@ -23,12 +23,12 @@
 import SpecDoctor from './SpecDoctor.vue';
 export default {
     name: "DoctorCard",
-    components:{
+    components: {
         SpecDoctor,
     },
 
     props: {
-       
+
         user: {
             type: Object,
             required: true,
