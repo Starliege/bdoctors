@@ -5,7 +5,8 @@
       <Nav/>
     </div>
     <div>
-      <SearchBar></SearchBar>
+      <!-- <SearchBar></SearchBar> -->
+      <SearchBarSel/>
       <Carousel/>
     </div>
 
@@ -27,6 +28,7 @@ import Footer from '../components/Footer.vue';
 import Nav from '../components/Nav.vue';
 import Home from '../pages/Home.vue';
 import SearchBar from '../components/SearchBar.vue';
+import SearchBarSel from '../components/SearchBarSel.vue';
 
 
 export default {
@@ -36,7 +38,9 @@ export default {
     Home,
     Jumbo,
     Carousel,
-    SearchBar
+    SearchBar,
+    SearchBarSel
+
 
   }
 
