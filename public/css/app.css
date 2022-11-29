@@ -1,5 +1,61 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+.mynavbar nav {
+  background-image: linear-gradient(to right, #3575fc, #39c3fc);
+}
+
+.mynavbar nav .menu-list {
+  background-image: linear-gradient(to right, #3575fc, #39c3fc);
+}
+
+.mynavbar nav .list_links {
+  align-items: flex-end;
+}
+
+.mynavbar nav a {
+  color: white !important;
+}
+
+.mynavbar nav a:hover {
+  color: #ff6600 !important;
+}
+
+.mynavbar nav li::after {
+  display: block;
+  position: absolute;
+  content: "";
+  top: 62px;
+  left: 0;
+  height: 1px;
+  width: 0%;
+  background-color: white;
+  -webkit-transition: width 0.3s;
+}
+
+.mynavbar nav li {
+  font-size: 20px;
+  position: relative;
+  height: 100%;
+  padding: 25px;
+}
+
+.mynavbar nav li:hover::after {
+  width: 100%;
+  transition: ease-in-out 0.3s;
+}
+
+.mynavbar nav .logo {
+  width: 150px;
+  aspect-ratio: 1/1;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.mynavbar nav .logo img {
+  width: 100%;
+}
+
 /*!
  * Bootstrap v4.6.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
