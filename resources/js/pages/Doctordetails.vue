@@ -50,7 +50,7 @@
                                 {{ rev.review }}
                             </div>
                             <div class="review_date">
-                                il: {{ rev.created_at }}
+                                il: {{ rev.created_at | formatDate }}
                             </div>
                         </div>
                     </div>
