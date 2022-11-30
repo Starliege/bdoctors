@@ -7,11 +7,10 @@
     <div>
       <!-- <SearchBar></SearchBar> -->
       <SearchBarSel/>
-      <Carousel/>
+      <Jumbo/>
     </div>
-
+    
     <router-view></router-view>
-    <Jumbo/>
     
     <div>
       <Footer></Footer>
@@ -23,7 +22,6 @@
 
 <script>
 import Jumbo from '../components/Jumbo.vue';
-import Carousel from '../components/Carousel.vue';
 import Footer from '../components/Footer.vue';
 import Nav from '../components/Nav.vue';
 import Home from '../pages/Home.vue';
@@ -37,11 +35,8 @@ export default {
     Nav,
     Home,
     Jumbo,
-    Carousel,
     SearchBar,
     SearchBarSel
-
-
   }
 
 
@@ -52,5 +47,4 @@ export default {
 
 
 <style lang="scss" scoped>
-
 </style>

@@ -1,46 +1,46 @@
 <template>
     <div>
-
-        <div class="row">
-            <div class="col-12 col-md-4">
-                <h4>Cerca un medico per specializzazione</h4>
-                <select name="" id="" v-model="filterText" class="form-control">
-                    <option value="">Scegli la specializzazione</option>
-                    <option :value="specialization.specialization" v-for="specialization in SpecsArray"
+        <div class="position">
+            <div class="row">
+                <div class="col-12 pt-4 pl-5">
+                    <h4>Cerca un medico per specializzazione</h4>
+                    <select name="" id="" v-model="filterText" class="form-control">
+                        <option value="">Scegli la specializzazione</option>
+                        <option :value="specialization.specialization" v-for="specialization in SpecsArray"
                         :key="specialization.id">
                         {{ specialization.specialization }}</option>
-                </select>
-                <button @click="filter()">
-                    Cerca
-                </button>
-            </div>
-        </div>
-        <div class="row py-5">
-            <div v-for="doc in filteredbySpec" class="card mx-3 " style="width: 18rem;">
-                <div class="img-box">
-                    <img v-if="doc.image" :src="`/storage/${doc.image}`" class="card-img-top" alt="...">
-                    <img src="http://mascitelliandpartners.com/map/wp-content/uploads/2015/03/placeholder_user.png"
-                        class="card-img-top" v-else>
-
+                    </select>
+                    <button @click="filter()">
+                        Cerca
+                    </button>
                 </div>
-
-                <div class="card-body">
-                    {{ doc.name }} {{ doc.surname }}
-
-                    <ul>
-                        <li v-for="spec in doc.specializations" :key="spec.id">
-                            {{ spec.specialization }}
-
-                        </li>
-                    </ul>
-
-                    <p v-if=" doc.reviews.length <= 0">nessuna recensione</p>
-                    <p v-else-if="doc.reviews.length == 1">{{doc.reviews.length}} recensione</p>
-                    <p v-else>{{doc.reviews.length}} recensioni</p>
-
-                    <p v-if="doc.stars.length <= 0">nessun voto disponibile</p>
-                    <p v-else>{{doc.avg}}</p>
-
+            </div>
+            <div class="row py-5">
+                <div v-for="doc in filteredbySpec" class="card mx-3 " style="width: 18rem;" :key="doc.id">
+                    <div class="img-box">
+                        <img v-if="doc.image" :src="`/storage/${doc.image}`" class="card-img-top" alt="...">
+                        <img src="http://mascitelliandpartners.com/map/wp-content/uploads/2015/03/placeholder_user.png"
+                        class="card-img-top" v-else>
+                        
+                    </div>
+                    
+                    <div class="card-body">
+                        {{ doc.name }} {{ doc.surname }}
+                        
+                        <ul>
+                            <li v-for="spec in doc.specializations" :key="spec.id">
+                                {{ spec.specialization }}
+                                
+                            </li>
+                        </ul>
+                        
+                        <p v-if=" doc.reviews.length <= 0">nessuna recensione</p>
+                        <p v-else-if="doc.reviews.length == 1">{{doc.reviews.length}} recensione</p>
+                        <p v-else>{{doc.reviews.length}} recensioni</p>
+                        <p v-if="doc.stars.length <= 0">nessun voto disponibile</p>
+                        <p v-else>{{doc.avg}}</p>
+                        
+                    </div>
                 </div>
             </div>
         </div>
@@ -48,6 +48,7 @@
 </template>
 
 <script>
+
 export default {
     name: "SearchBarSel",
     data() {
@@ -57,8 +58,6 @@ export default {
             filteredbySpec: [],
             specs: [],
             SpecsArray: [],
-
-
         }
     },
     beforeMount() {
@@ -124,9 +123,20 @@ export default {
 
         // }
     },
-}
+};
 </script>
 
 <style lang="scss" scoped>
 
+.position{
+    position: absolute;
+}
+
+h4{
+    color:white;
+}
+
+.form-control{
+    max-width:300px;
+}
 </style>

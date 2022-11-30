@@ -55,6 +55,7 @@ export default {
 footer {
     background-image: linear-gradient(to right, #3575fc, #39c3fc);
     justify-content: space-between;
+    height: 250px;
 }
 
 ul.vertical_menu {
