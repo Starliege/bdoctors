@@ -35382,8 +35382,8 @@ try {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Laravel\bdoctors-team2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Laravel\bdoctors-team2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\progetto_finale_team\bdoctors\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\progetto_finale_team\bdoctors\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

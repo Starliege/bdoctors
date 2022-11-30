@@ -9,9 +9,9 @@
     <div>
       <!-- <SearchBar></SearchBar> -->
       <!-- <SearchBarSel/> -->
-      <Carousel/>
+      <!-- <Carousel/> -->
     </div>
-    <Jumbo/>
+    <!-- <Jumbo/> -->
     
     <div>
       <Footer></Footer>
@@ -22,8 +22,8 @@
 
 
 <script>
-import Jumbo from '../components/Jumbo.vue';
-import Carousel from '../components/Carousel.vue';
+// import Jumbo from '../components/Jumbo.vue';
+// import Carousel from '../components/Carousel.vue';
 import Footer from '../components/Footer.vue';
 import Nav from '../components/Nav.vue';
 import Home from '../pages/Home.vue';
@@ -36,8 +36,8 @@ export default {
     Footer,
     Nav,
     Home,
-    Jumbo,
-    Carousel,
+    // Jumbo,
+    // Carousel,
     SearchBar,
     SearchBarSel
 
