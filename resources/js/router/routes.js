@@ -1,9 +1,10 @@
 import Home from '../pages/Home.vue';
 import AdvancedSearch from '../pages/AdvancedSearch.vue';
+import Doctordetails from '../pages/Doctordetails.vue';
 
 const routes = [
   {
-    path: '/home',
+    path: '/',
     name: 'home',
     component: Home,
   },
@@ -11,6 +12,11 @@ const routes = [
     path: '/search',
     name: 'search',
     component: AdvancedSearch,
+  },
+  {
+    path: '/doctor/:id',
+    name: 'doctor.details',
+    component: Doctordetails,
   }
 ]
 

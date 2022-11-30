@@ -93,6 +93,7 @@
         <main class="py-4">
             @yield('content')
             @yield('guestcontent')
+            @yield('vuecontent')
         </main>
     </div>
 </body>

@@ -3,11 +3,18 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Message;
 use Illuminate\Http\Request;
-use App\User;
 
-class UserController extends Controller
+class MessageController extends Controller
 {
+
+    protected $validationMes = [
+        "name_sender" => 'required|string|min:3',
+        "surname_sender" => 'required|string|min:3',
+        "mail_sender" => 'required|email',
+        "message_sender" => 'required|min:3',
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +22,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $result = User::orderBy('created_at', 'desc')->with('specializations', 'stars','sponsorships','reviews')->get();
-        return response()->json(compact('result'));
+        $messages = Message::all();
+        return response()->json($messages);
     }
 
     /**
@@ -27,7 +34,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate($this->validationMes);
+        $data= $request->all();
+
+        $newMessage = new Message();
+        $newMessage->name_sender = $data['name_sender'];
+        $newMessage->surname_sender = $data['surname_sender'];
+        $newMessage->mail_sender = $data['mail_sender'];
+        $newMessage->message_sender = $data['message_sender'];
+        $newMessage->user_id = $data['user_id'];
+
+        $newMessage->save();
+        return response()->json($newMessage);
     }
 
     /**
@@ -38,8 +56,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $result = User::where('id',$id)->with('specializations', 'stars','sponsorships','reviews')->first();
-        return response()->json(compact('result'));
+        //
     }
 
     /**

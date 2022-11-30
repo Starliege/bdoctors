@@ -1,16 +1,16 @@
 <template>
   <div>
 
-    <div>
+    <!-- <div>
       <Nav/>
-    </div>
+    </div> -->
+    
+    <router-view></router-view>
     <div>
       <!-- <SearchBar></SearchBar> -->
-      <SearchBarSel/>
+      <!-- <SearchBarSel/> -->
       <Carousel/>
     </div>
-
-    <router-view></router-view>
     <Jumbo/>
     
     <div>

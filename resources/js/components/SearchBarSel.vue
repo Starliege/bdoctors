@@ -40,7 +40,7 @@
 
                     <p v-if="doc.stars.length <= 0">nessun voto disponibile</p>
                     <p v-else>{{doc.avg}}</p>
-
+                    <router-link :to="{ name: 'doctor.details', params: {id: doc.id }}">show</router-link>
                 </div>
             </div>
         </div>
