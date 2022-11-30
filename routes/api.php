@@ -20,3 +20,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('users','Api\UserController')->only(['index','show']);
 Route::resource('specializations','Api\SpecializationController')->only(['index','show']);
+
+Route::get('/messages','Api\MessageController@index');
+
+Route::post('/messages','Api\MessageController@store');
+
+Route::get('/reviews', 'Api\ReviewController@index');
+
+Route::post('/reviews', 'Api\ReviewController@store');

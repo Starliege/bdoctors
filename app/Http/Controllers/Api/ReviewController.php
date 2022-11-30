@@ -3,11 +3,16 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Review;
 use Illuminate\Http\Request;
-use App\User;
 
-class UserController extends Controller
+class ReviewController extends Controller
 {
+    protected $validationReview = [
+        "name_reviewer" => "required|string|min:3",
+        "surname_reviewer" => "required|string|min:3",
+        "review" => "required|min:3",
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +20,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $result = User::orderBy('created_at', 'desc')->with('specializations', 'stars','sponsorships','reviews')->get();
-        return response()->json(compact('result'));
+        $reviews = Review::orderBy('created_at','desc')->get();
+        return response()->json($reviews);
     }
 
     /**
@@ -27,7 +32,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate($this->validationReview);
+
+        $data = $request->all();
+        $newReview = new Review();
+        $newReview->name_reviewer = $data['name_reviewer'];
+        $newReview->surname_reviewer = $data['surname_reviewer'];
+        $newReview->review = $data['review'];
+        $newReview->user_id = $data['user_id'];
+
+        $newReview->save();
+        return response()->json($newReview);
     }
 
     /**
@@ -38,8 +53,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $result = User::where('id',$id)->with('specializations', 'stars','sponsorships','reviews')->first();
-        return response()->json(compact('result'));
+        //
     }
 
     /**
