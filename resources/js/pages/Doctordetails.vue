@@ -275,6 +275,7 @@ section {
         h2 {
             text-align: center;
             font-weight: 600;
+            font-size: 22px;
         }
 
         .input_style {
