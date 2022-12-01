@@ -10,13 +10,18 @@
                         :key="specialization.id">
                         {{ specialization.specialization }}</option>
                 </select>
-                <button @click="filter()">
-                    Cerca
-                </button>
+                <router-link :to="{ name: 'search'}">
+                    <button @click=filter()>
+                        Cerca
+                    </button>
+                </router-link>
             </div>
         </div>
-        <div class="row py-5">
-            <div v-for="doc in filteredbySpec" class="card mx-3 " style="width: 18rem;">
+
+
+
+        <!-- <div class="row py-5">
+            <div v-for="doc in filteredDoctors" class="card mx-3 " style="width: 18rem;">
                 <div class="img-box">
                     <img v-if="doc.image" :src="`/storage/${doc.image}`" class="card-img-top" alt="...">
                     <img src="http://mascitelliandpartners.com/map/wp-content/uploads/2015/03/placeholder_user.png"
@@ -43,11 +48,14 @@
                     <router-link :to="{ name: 'doctor.details', params: {id: doc.id }}">show</router-link>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
 <script>
+
+import state from '../store.js';
+
 export default {
     name: "SearchBarSel",
     data() {
@@ -61,19 +69,28 @@ export default {
 
         }
     },
+    computed:{
+      doctorsComputed(){
+          console.log(state.doctors , 'dottori computed')
+        return state.doctors
+      },
+      filteredDoctors(){
+        console.log(state.filteredDocs, 'dottori filrati computed')
+
+        return state.filteredDocs
+      }
+    },
     beforeMount() {
         this.fetchSpecs()
-
-    },
-    created(){
         this.fetchDoctors()
 
     },
+   
     methods: {
         fetchDoctors() {
             axios.get('/api/users').then((res) => {
-                this.doctorsArray = res.data.result
-                console.log(this.doctorsArray)
+               state.doctors = res.data.result
+                // console.log(this.doctorsArray)
             })
 
 
@@ -81,12 +98,12 @@ export default {
         fetchSpecs() {
             axios.get('/api/specializations').then((res) => {
                 this.SpecsArray = res.data
-                console.log(this.SpecsArray)
+                // console.log(this.SpecsArray)
             })
         },
         filter() {
-            this.filteredbySpec = [],
-                this.doctorsArray.forEach(el => {
+            state.filteredDocs = [],
+                state.doctors.forEach(el => {
                     el.visible = false
                     this.specs = el.specializations
                     el.total = 0
@@ -102,27 +119,14 @@ export default {
 
                         if (spec.specialization == this.filterText) {
                             el.visible = true
-                            this.filteredbySpec.push(el)
+                            state.filteredDocs.push(el)
                         }
                     });
                 });
-            console.log(this.filteredbySpec)
+            // console.log(this.filteredbySpec)
         },
-        // reset() {
-        //     this.filteredbySpec = []
-        //     this.filterText = ''
-        // },
 
-        // vote(doctor) {
-        //     let total = []
-        //     // console.log(doc)
-        //     doctor.stars.forEach(star => {
-        //         total += star.vote
-        //     });
-
-        //     console.log(total)
-
-        // }
+        
     },
 }
 </script>

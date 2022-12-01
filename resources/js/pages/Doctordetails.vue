@@ -7,7 +7,7 @@
                 <div class="col-12 text-center">
                     <h1>Dott. {{ doc.name }} {{ doc.surname }} </h1>
                 </div>
-                <div class="row justify-content-center py-3">
+                <div class="row justify-content-center py-3 row_details">
                     <div class="col-4">
                         <div class="d-flex flex-column justify-content-center">
                             <img v-if="doc.image" :src="`/storage/${doc.image}`" class="card-img-top" alt="...">
@@ -15,7 +15,7 @@
                                 class="card-img-top" v-else>
                         </div>
                     </div>
-                    <div class="col-8">
+                    <div class="col-8 col_docdetails">
                         <p class="card-text"><strong> Email: </strong>{{ doc.email }}</p>
                         <p class="card-text"> <strong> Indirizzo: </strong>{{ doc.address }}</p>
                         <p> <strong> Specializzazioni :</strong>
@@ -26,7 +26,8 @@
                         </p>
                         <p class="card-text" v-if="doc.phone"> <strong> Numero di telefono: </strong>{{ doc.phone }}</p>
                         <p class="card-text" v-if="doc.services"> <strong> Prestazioni: </strong>{{ doc.services }}</p>
-                        <a v-if="doc.cv" class="btn btn-secondary" href="" role="button">&#129047;
+                        <a v-if="doc.cv" class="btn btn-secondary" href="../../../public/storage/cvs"
+                            role="button">&#129047;
                             Scarica
                             CV &#129047;</a>
 
@@ -59,77 +60,83 @@
 
 
                 <!-- form per messaggio privato -->
-                <div class="row row-forms">
+                <div class="row row-forms row-cols-1">
 
-                    <div class="col-4">
+                    <div class="col-12 py-4">
                         <h2>Lascia un messaggio</h2>
-                        <form @submit.prevent="sendMes()">
+                        <form @submit.prevent="sendMes()" class="mex_form">
                             <!-- nome utente per il form  messaggio  -->
-                            <div class="username-container">
+                            <div class="username-container input_style">
                                 <label for="name_sender"> Inserisci il tuo nome&#42;</label>
-                                <br>
+
                                 <input v-model="formMes.name_sender" type="text" placeholder="Nome" minlength="1"
                                     maxlength="100" required />
                             </div>
-                            <div class="username-container">
+                            <div class="username-container input_style">
                                 <label for="surname_sender"> Inserisci il tuo cognome&#42;</label>
-                                <br>
+
                                 <input v-model="formMes.surname_sender" type="text" placeholder="Cognome" minlength="1"
                                     maxlength="100" required />
                             </div>
                             <!-- contenuto per il form messaggio -->
-                            <div class="content-container">
+                            <div class="content-container input_style">
                                 <label for="message_sender"> Inserisci il tuo messaggio&#42;</label>
-                                <br>
+
                                 <textarea v-model="formMes.message_sender" type="text" placeholder="Messaggio"
-                                    maxlength="255" required></textarea>
+                                    required></textarea>
                             </div>
                             <!-- email per il form messaggio  -->
-                            <div class="email-container">
+                            <div class="email-container input_style">
                                 <label for="mail_sender"> Inserisci la tua email&#42;</label>
-                                <br>
+
                                 <input type="email" v-model="formMes.mail_sender" placeholder="Email" required>
                             </div>
-                            <button type="submit">Invia</button>
-                            <h4 class="invio-messaggio text-center mt-3" v-if="conferma">Il tuo messaggio è stato
-                                inviato!
-                            </h4>
+                            <div class="input_style">
+                                <button class="button-details" type="submit">Invia</button>
+                                <h4 class="invio-messaggio text-center mt-3" v-if="conferma">Il tuo messaggio è stato
+                                    inviato!
+                                </h4>
+
+                            </div>
                         </form>
                     </div>
 
                     <!-- form per lasciare recensione -->
 
-                    <div class="col-4">
-                        <form @submit.prevent="addReviews()">
+                    <div class="col-12 py-4">
+                        <form @submit.prevent="addReviews()" class="rev_form">
                             <h2>Lascia una recensione</h2>
                             <!-- input name  commento-->
-                            <div class="name-comment">
+                            <div class="name-comment input_style">
                                 <label for="name_reviewer">Inserisci il tuo nome&#42;</label>
-                                <br>
+
                                 <input v-model="formData.name_reviewer" type="text" minlength="1" maxlength="100"
                                     placeholder="Nome" required />
                             </div>
-                            <div class="name-comment">
+                            <div class="name-comment input_style">
                                 <label for="surname_reviewer">Inserisci il tuo cognome&#42;</label>
-                                <br>
+
                                 <input v-model="formData.surname_reviewer" type="text" minlength="1" maxlength="100"
                                     placeholder="Cognome" required />
                             </div>
                             <!-- input comment commento-->
-                            <div class="text-comment">
+                            <div class="text-comment input_style">
 
                                 <label for="review">Inserisci il tuo commento&#42;</label>
-                                <br>
+
                                 <textarea name="review" id="contentEditor" maxlength="255" placeholder="Commento"
                                     v-model="formData.review" required>
                             </textarea>
                             </div>
+                            <div class="input_style">
 
-                            <button type="submit">Invia</button>
+                                <button type="submit" class="button-details">Invia</button>
+
+                            </div>
                         </form>
                     </div>
 
-                    <div class="col-4">
+                    <div class="col-12">
                         <form class="border p-4">
 
                             <h2 class="text-center">Lascia un voto</h2>
@@ -230,14 +237,93 @@ export default {
 
 <style lang="scss" scoped>
 section {
-    background-color: rgba(56, 175, 252, 0.3);
+    background-color: rgba(56, 174, 252, 0.192);
+
+    .row_details {
+        background-color: #00000040;
+        color: #40434a;
+        border-radius: 10px;
+        padding: 20px;
+
+        .col_docdetails {
+            background-color: #00fff624;
+            padding: 10px;
+            border-radius: 3px;
+            font-size: 20px;
+        }
+    }
 
     .row-forms {
-        max-height: 500px;
+        // max-height: 500px;
         display: flex;
         justify-content: space-between;
         padding: 2rem 0;
         width: 100%;
+
+        .col-12 {
+            background-color: #00000040;
+            color: #40434a;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .mex_form input,
+        .rev_form input {
+            width: 80%;
+        }
+
+        h2 {
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .input_style {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+            padding: 10px 0;
+            
+            label{
+                font-weight: 600;
+            }
+
+            input {
+                line-height: 40px;
+                padding: 0 10px;
+                background-color: #d3ebfc9c;
+                border: none;
+                color: black;
+                border-radius: 4px;
+                box-shadow: 1px 1px 4px black;
+            }
+
+            textarea {
+                width: 80%;
+                padding: 20px;
+                background-color: #d3ebfc9c;
+                border: none;
+                color: black;
+                border-radius: 4px;
+                box-shadow: 1px 1px 4px black;
+            }
+
+            .button-details {
+                padding: 5px 20px;
+                border-radius: 20px;
+                background-color: #186f79b5;
+                border: none;
+                color: white;
+                font-size: 18px;
+                transition: all 300ms;
+
+                &:hover {
+                    // transform: scale(1.02);
+                    background-color: #186f79d8;
+                    // border: 1px solid white;
+                }
+            }
+        }
     }
 
     .reviews_title {
@@ -252,33 +338,33 @@ section {
     }
 
 
-.col-reviews {
-    background-color: #3578fcc4;
-    color: white;
-    border-radius: 20px;
-    box-shadow: 0px 6px 10px #000000b0;
+    .col-reviews {
+        background-color: #3578fcc4;
+        color: white;
+        border-radius: 20px;
+        box-shadow: 0px 6px 10px #000000b0;
 
-    .name_reviewer {
-        text-shadow: 2px 1px 2px #143470;
+        .name_reviewer {
+            text-shadow: 2px 1px 2px #143470;
+        }
+
+        .review_content {
+            background-color: #00000030;
+            border-radius: 15px;
+            padding: 20px;
+            // max-width: 400px;
+
+        }
+
+        .review_user {
+            padding: 10px;
+        }
+
+        .review_date {
+            padding: 20px 0;
+            font-size: 14px;
+        }
+
     }
-
-    .review_content {
-        background-color: #00000030;
-        border-radius: 15px;
-        padding: 20px;
-        // max-width: 400px;
-
-    }
-
-    .review_user {
-        padding: 10px;
-    }
-
-    .review_date {
-        padding: 20px 0;
-        font-size: 14px;
-    }
-
-}
 }
 </style>

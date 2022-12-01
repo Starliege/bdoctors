@@ -2,10 +2,6 @@
   <div>
     <section>
       <SearchBarSel/>
-      <!-- <Carousel/>
-      <Jumbo/> -->
-        
-      
     </section>
     <section>
       
@@ -17,6 +13,7 @@
 // import Carousel from '../components/Carousel.vue';
 import DoctorList from './DoctorList.vue';
 import SearchBarSel from '../components/SearchBarSel.vue';
+// import AdvancedSearch from '../pages/AdvancedSearch.vue'
 export default {
   name: 'Home',
 
