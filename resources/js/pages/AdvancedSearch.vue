@@ -1,6 +1,9 @@
 <template>
   <div class="container py-5">
-    <div class=" p-5 row_doctors row row-cols-2 row-cols-lg-4 row-cols-sm-1 row-cols-md-3 gy-1">
+    <div class=" p-5 row_doctors row row-cols-2 row-cols-lg-4 row-cols-sm-1 row-cols-md-3 gy-1" >
+      <div v-if="filteredDoctors.length == 0">
+        nessun dottore
+      </div>
       <div v-for="doc in filteredDoctors" class=" col card card_doctors " style="width: 18rem;">
         <div class="img-box py-2">
           <img v-if="doc.image" :src="`/storage/${doc.image}`" class="card-img-top" alt="...">

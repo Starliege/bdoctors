@@ -26,8 +26,8 @@
                         </p>
                         <p class="card-text" v-if="doc.phone"> <strong> Numero di telefono: </strong>{{ doc.phone }}</p>
                         <p class="card-text" v-if="doc.services"> <strong> Prestazioni: </strong>{{ doc.services }}</p>
-                        <a v-if="doc.cv" class="btn btn-secondary" href="../../../public/storage/cvs"
-                            role="button">&#129047;
+                        <a v-if="doc.cv" class="btn btn-secondary" :href="`/storage/${doc.cv}`"
+                            role="button" target="_blank">&#129047;
                             Scarica
                             CV &#129047;</a>
 

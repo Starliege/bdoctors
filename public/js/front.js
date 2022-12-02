@@ -2936,7 +2936,7 @@ var render = function render() {
     staticClass: "container py-5"
   }, [_c("div", {
     staticClass: "p-5 row_doctors row row-cols-2 row-cols-lg-4 row-cols-sm-1 row-cols-md-3 gy-1"
-  }, _vm._l(_vm.filteredDoctors, function (doc) {
+  }, [_vm.filteredDoctors.length == 0 ? _c("div", [_vm._v("\n      nessun dottore\n    ")]) : _vm._e(), _vm._v(" "), _vm._l(_vm.filteredDoctors, function (doc) {
     return _c("div", {
       staticClass: "col card card_doctors",
       staticStyle: {
@@ -2977,7 +2977,7 @@ var render = function render() {
     }, [_c("button", {
       staticClass: "button-details"
     }, [_vm._v("\n              Dettagli\n            ")])])], 1)])]);
-  }), 0)]);
+  })], 2)]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -3073,8 +3073,9 @@ var render = function render() {
   }, [_c("strong", [_vm._v(" Prestazioni: ")]), _vm._v(_vm._s(_vm.doc.services))]) : _vm._e(), _vm._v(" "), _vm.doc.cv ? _c("a", {
     staticClass: "btn btn-secondary",
     attrs: {
-      href: "../../../public/storage/cvs",
-      role: "button"
+      href: "/storage/".concat(_vm.doc.cv),
+      role: "button",
+      target: "_blank"
     }
   }, [_vm._v("🠗\n                        Scarica\n                        CV 🠗")]) : _vm._e()])]), _vm._v(" "), _c("div", {
     staticClass: "col-12"
@@ -3581,7 +3582,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "section[data-v-0b80800a] {\n  background-color: rgba(56, 174, 252, 0.192);\n}\nsection .row_details[data-v-0b80800a] {\n  background-color: rgba(0, 0, 0, 0.2509803922);\n  color: #40434a;\n  border-radius: 10px;\n  padding: 20px;\n}\nsection .row_details .col_docdetails[data-v-0b80800a] {\n  background-color: rgba(0, 255, 246, 0.1411764706);\n  padding: 10px;\n  border-radius: 3px;\n  font-size: 20px;\n}\nsection .row-forms[data-v-0b80800a] {\n  display: flex;\n  justify-content: space-between;\n  padding: 2rem 0;\n  width: 100%;\n}\nsection .row-forms .col-12[data-v-0b80800a] {\n  background-color: rgba(0, 0, 0, 0.2509803922);\n  color: #40434a;\n  border-radius: 10px;\n  margin-top: 30px;\n}\nsection .row-forms .mex_form input[data-v-0b80800a],\nsection .row-forms .rev_form input[data-v-0b80800a] {\n  width: 80%;\n}\nsection .row-forms h2[data-v-0b80800a] {\n  text-align: center;\n  font-weight: 600;\n}\nsection .row-forms .input_style[data-v-0b80800a] {\n  display: flex;\n  flex-direction: column;\n  align-content: center;\n  align-items: center;\n  padding: 10px 0;\n}\nsection .row-forms .input_style label[data-v-0b80800a] {\n  font-weight: 600;\n}\nsection .row-forms .input_style input[data-v-0b80800a] {\n  line-height: 40px;\n  padding: 0 10px;\n  background-color: rgba(211, 235, 252, 0.6117647059);\n  border: none;\n  color: black;\n  border-radius: 4px;\n  box-shadow: 1px 1px 4px black;\n}\nsection .row-forms .input_style textarea[data-v-0b80800a] {\n  width: 80%;\n  padding: 20px;\n  background-color: rgba(211, 235, 252, 0.6117647059);\n  border: none;\n  color: black;\n  border-radius: 4px;\n  box-shadow: 1px 1px 4px black;\n}\nsection .row-forms .input_style .button-details[data-v-0b80800a] {\n  padding: 5px 20px;\n  border-radius: 20px;\n  background-color: rgba(24, 111, 121, 0.7098039216);\n  border: none;\n  color: white;\n  font-size: 18px;\n  transition: all 300ms;\n}\nsection .row-forms .input_style .button-details[data-v-0b80800a]:hover {\n  background-color: rgba(24, 111, 121, 0.8470588235);\n}\nsection .reviews_title[data-v-0b80800a] {\n  max-width: 400px;\n  margin: 0 auto;\n  background-color: rgba(69, 118, 205, 0.4784313725);\n  padding: 20px;\n  box-shadow: 0px 5px 20px 1px rgba(102, 98, 98, 0.4784313725);\n  color: white;\n  text-shadow: -4px 2px 5px rgba(0, 0, 0, 0.6117647059);\n  border-radius: 5px;\n}\nsection .col-reviews[data-v-0b80800a] {\n  background-color: rgba(53, 120, 252, 0.768627451);\n  color: white;\n  border-radius: 20px;\n  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.6901960784);\n}\nsection .col-reviews .name_reviewer[data-v-0b80800a] {\n  text-shadow: 2px 1px 2px #143470;\n}\nsection .col-reviews .review_content[data-v-0b80800a] {\n  background-color: rgba(0, 0, 0, 0.1882352941);\n  border-radius: 15px;\n  padding: 20px;\n}\nsection .col-reviews .review_user[data-v-0b80800a] {\n  padding: 10px;\n}\nsection .col-reviews .review_date[data-v-0b80800a] {\n  padding: 20px 0;\n  font-size: 14px;\n}", ""]);
+exports.push([module.i, "section[data-v-0b80800a] {\n  background-color: rgba(56, 174, 252, 0.192);\n}\nsection .row_details[data-v-0b80800a] {\n  background-color: rgba(0, 0, 0, 0.2509803922);\n  color: #40434a;\n  border-radius: 10px;\n  padding: 20px;\n}\nsection .row_details .col_docdetails[data-v-0b80800a] {\n  background-color: rgba(0, 255, 246, 0.1411764706);\n  padding: 10px;\n  border-radius: 3px;\n  font-size: 20px;\n}\nsection .row-forms[data-v-0b80800a] {\n  display: flex;\n  justify-content: space-between;\n  padding: 2rem 0;\n  width: 100%;\n}\nsection .row-forms .col-12[data-v-0b80800a] {\n  background-color: rgba(0, 0, 0, 0.2509803922);\n  color: #40434a;\n  border-radius: 10px;\n  margin-top: 30px;\n}\nsection .row-forms .mex_form input[data-v-0b80800a],\nsection .row-forms .rev_form input[data-v-0b80800a] {\n  width: 80%;\n}\nsection .row-forms h2[data-v-0b80800a] {\n  text-align: center;\n  font-weight: 600;\n  font-size: 22px;\n}\nsection .row-forms .input_style[data-v-0b80800a] {\n  display: flex;\n  flex-direction: column;\n  align-content: center;\n  align-items: center;\n  padding: 10px 0;\n}\nsection .row-forms .input_style label[data-v-0b80800a] {\n  font-weight: 600;\n}\nsection .row-forms .input_style input[data-v-0b80800a] {\n  line-height: 40px;\n  padding: 0 10px;\n  background-color: rgba(211, 235, 252, 0.6117647059);\n  border: none;\n  color: black;\n  border-radius: 4px;\n  box-shadow: 1px 1px 4px black;\n}\nsection .row-forms .input_style textarea[data-v-0b80800a] {\n  width: 80%;\n  padding: 20px;\n  background-color: rgba(211, 235, 252, 0.6117647059);\n  border: none;\n  color: black;\n  border-radius: 4px;\n  box-shadow: 1px 1px 4px black;\n}\nsection .row-forms .input_style .button-details[data-v-0b80800a] {\n  padding: 5px 20px;\n  border-radius: 20px;\n  background-color: rgba(24, 111, 121, 0.7098039216);\n  border: none;\n  color: white;\n  font-size: 18px;\n  transition: all 300ms;\n}\nsection .row-forms .input_style .button-details[data-v-0b80800a]:hover {\n  background-color: rgba(24, 111, 121, 0.8470588235);\n}\nsection .reviews_title[data-v-0b80800a] {\n  max-width: 400px;\n  margin: 0 auto;\n  background-color: rgba(69, 118, 205, 0.4784313725);\n  padding: 20px;\n  box-shadow: 0px 5px 20px 1px rgba(102, 98, 98, 0.4784313725);\n  color: white;\n  text-shadow: -4px 2px 5px rgba(0, 0, 0, 0.6117647059);\n  border-radius: 5px;\n}\nsection .col-reviews[data-v-0b80800a] {\n  background-color: rgba(53, 120, 252, 0.768627451);\n  color: white;\n  border-radius: 20px;\n  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.6901960784);\n}\nsection .col-reviews .name_reviewer[data-v-0b80800a] {\n  text-shadow: 2px 1px 2px #143470;\n}\nsection .col-reviews .review_content[data-v-0b80800a] {\n  background-color: rgba(0, 0, 0, 0.1882352941);\n  border-radius: 15px;\n  padding: 20px;\n}\nsection .col-reviews .review_user[data-v-0b80800a] {\n  padding: 10px;\n}\nsection .col-reviews .review_date[data-v-0b80800a] {\n  padding: 20px 0;\n  font-size: 14px;\n}", ""]);
 
 // exports
 
