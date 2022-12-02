@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Star;
+use App\User;
 use Illuminate\Http\Request;
 
 class VoteController extends Controller
@@ -12,7 +13,7 @@ class VoteController extends Controller
     protected $validationVote = [
         "id" => 'required|exists:users,id',
         "vote" => 'required',
-        // "user_id" => 'required',
+        "user_id" => 'required',
     ];
     /**
      * Display a listing of the resource.
@@ -43,16 +44,28 @@ class VoteController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate($this->validationVote);
+        // $request->validate($this->validationVote);
+        // $data= $request->all();
+
+        // $newVote = new Star();
+        // $newVote->id = $data['id'];
+        // $newVote->vote = $data['vote'];
+        // $newVote->user_id = $data['user_id'];
+
+        // $newVote->save();
         $data= $request->all();
 
-        $newVote = new Star();
-        $newVote->id = $data['id'];
-        $newVote->vote = $data['vote'];
-        $newVote->user_id = $data['user_id'];
+        // dd($data);
+        $params = $request->validate([
+            'vote'=>'required',
+            'user_id' => 'required|exists:users,id',
+          ]);
+        
+        $user = User::where('id', $data['user_id'])->first();
 
-        $newVote->save();
-        return response()->json($newVote);
+        $user->stars()->attach($data['user_id'], ['user_id'=> $user->id, 'star_id'=>$data['vote'] ]);
+        $user->save();
+        return response()->json($user);
     }
 
     /**

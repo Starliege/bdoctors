@@ -2251,9 +2251,8 @@ __webpack_require__.r(__webpack_exports__);
         user_id: ""
       },
       formVote: {
-        id: "",
-        vote: "",
-        user_id: ""
+        user_id: "",
+        vote: ""
       },
       conferma: false
     };
@@ -2266,6 +2265,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.doc = res.data.result;
         _this.formMes.user_id = _this.doc.id;
         _this.formData.user_id = _this.doc.id;
+        _this.formVote.user_id = _this.doc.id;
         console.log(_this.doc);
       });
     },
@@ -2288,7 +2288,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
       axios.post("/api/votes", this.formVote).then(function (response) {
         // console.log(response.data)
-        _this4.formVote.id = "", _this4.formVote.vote = "", _this4.formVote.user_id = "", _this4.doc.vote.push(response.data);
+        // this.formVote.user_id = "",
+        _this4.formVote.vote = "", _this4.doc.vote.push(response.data);
       });
     }
   },
@@ -3342,7 +3343,14 @@ var render = function render() {
     }
   })]), _vm._v(" "), _vm._m(1)])]), _vm._v(" "), _c("div", {
     staticClass: "col-12"
-  }, [_c("form", {}, [_c("h2", {
+  }, [_c("form", {
+    on: {
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.SendVotes();
+      }
+    }
+  }, [_c("h2", {
     staticClass: "text-center"
   }, [_vm._v("Lascia un voto")]), _vm._v(" "), _c("div", {
     staticClass: "form-row d-flex justify-content-center"

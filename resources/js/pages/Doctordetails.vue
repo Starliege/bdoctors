@@ -137,7 +137,7 @@
                     </div>
 
                     <div class="col-12">
-                        <form class="">
+                        <form @submit.prevent="SendVotes()">
 
                             <h2 class="text-center">Lascia un voto</h2>
                             <div class="form-row d-flex justify-content-center">
@@ -190,9 +190,9 @@ export default {
                 user_id: "",
             },
             formVote: {
-               id: "",
-               vote: "",
                user_id: "",
+               vote: "",
+           
             },
             conferma: false,
         }
@@ -204,6 +204,7 @@ export default {
                 this.doc = res.data.result;
                 this.formMes.user_id = this.doc.id
                 this.formData.user_id = this.doc.id
+                this.formVote.user_id = this.doc.id
                 console.log(this.doc)
             })
         },
@@ -230,9 +231,8 @@ export default {
         SendVotes() {
             axios.post("/api/votes", this.formVote).then((response) => {
                 // console.log(response.data)
-                this.formVote.id = "",
+                // this.formVote.user_id = "",
                 this.formVote.vote = "",
-                this.formVote.user_id = "",
                 this.doc.vote.push(response.data);
             });
         },
