@@ -8,11 +8,16 @@ require('moment');
 
 Vue.use(VueMoment,{moment});
 
+
 Vue.filter('formatDate', function(value){
   if(value){
     return moment(String(value)).format('MM/DD/YYYY')
   }
+  
 });
+
+const dayjs = require("dayjs");
+dayjs().format();
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 import App from './views/App.vue';
