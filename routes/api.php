@@ -28,3 +28,5 @@ Route::post('/messages','Api\MessageController@store');
 Route::get('/reviews', 'Api\ReviewController@index');
 
 Route::post('/reviews', 'Api\ReviewController@store');
+
+Route::post('/votes', 'Api\VoteController@store');
