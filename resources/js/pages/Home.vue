@@ -4,7 +4,7 @@
       <SearchBarSel/>
       <!-- <Carousel/> -->
       <Jumbo/> 
-        <Sponsor/>
+      <Sponsor/>
       
     </section>
     <section>
@@ -17,7 +17,7 @@ import Jumbo from '../components/Jumbo.vue';
 // import Carousel from '../components/Carousel.vue';
 import DoctorList from './DoctorList.vue';
 import SearchBarSel from '../components/SearchBarSel.vue';
-import Sponsor from '../components/Sponsor.vue'
+import Sponsor from '../components/Sponsor.vue';
 export default {
   name: 'Home',
 
