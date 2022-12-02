@@ -81,7 +81,7 @@ export default {
 </script>
 <style scoped lang="scss">
 .row_doctors {
-  justify-content: space-between;
+  // justify-content: space-between;
   flex-wrap: wrap;
   gap: 40px;
 
