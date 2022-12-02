@@ -130,7 +130,7 @@
                     </div>
 
                     <div class="col-4">
-                        <form class="border p-4">
+                        <form>
 
                             <h2 class="text-center">Lascia un voto</h2>
                             <div class="form-row d-flex justify-content-center">
@@ -158,8 +158,8 @@
 
 
             </div>
+            <span>* Campi obbligatori</span>
         </div>
-
     </section>
 </template>
 

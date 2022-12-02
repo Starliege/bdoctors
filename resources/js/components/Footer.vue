@@ -32,7 +32,8 @@
                                 </li>
                                 <li>
                                     <a target="_blank" href="#"
-                                        class="grey_white_link text-decoration-none">Davide</a>
+                                        class="grey_white_link text-decoration-none">Davide</a> 
+                                        <img src="https://dinopixel.com/preload/0620/baby-yoda.png" alt="" style="width: 40px">
                                 </li>
                             </ul>
                         </div>

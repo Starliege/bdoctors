@@ -2274,8 +2274,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Jumbo_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Jumbo.vue */ "./resources/js/components/Jumbo.vue");
 /* harmony import */ var _DoctorList_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DoctorList.vue */ "./resources/js/pages/DoctorList.vue");
 /* harmony import */ var _components_SearchBarSel_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/SearchBarSel.vue */ "./resources/js/components/SearchBarSel.vue");
+/* harmony import */ var _components_Description_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Description.vue */ "./resources/js/components/Description.vue");
 
 // import Carousel from '../components/Carousel.vue';
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2284,7 +2286,8 @@ __webpack_require__.r(__webpack_exports__);
     Jumbo: _components_Jumbo_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     // Carousel,
     DoctorList: _DoctorList_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    SearchBarSel: _components_SearchBarSel_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    SearchBarSel: _components_SearchBarSel_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Description: _components_Description_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   data: function data() {
     return {
@@ -2309,7 +2312,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_Home_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../pages/Home.vue */ "./resources/js/pages/Home.vue");
 /* harmony import */ var _components_SearchBar_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/SearchBar.vue */ "./resources/js/components/SearchBar.vue");
 /* harmony import */ var _components_SearchBarSel_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/SearchBarSel.vue */ "./resources/js/components/SearchBarSel.vue");
-/* harmony import */ var _components_Description_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Description.vue */ "./resources/js/components/Description.vue");
 // import Jumbo from '../components/Jumbo.vue';
 // import Carousel from '../components/Carousel.vue';
 
@@ -2317,6 +2319,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// import Description from '../components/Description.vue';
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2326,8 +2329,8 @@ __webpack_require__.r(__webpack_exports__);
     // Jumbo,
     // Carousel,
     SearchBar: _components_SearchBar_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    SearchBarSel: _components_SearchBarSel_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
-    Description: _components_Description_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+    SearchBarSel: _components_SearchBarSel_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+    // Description,
   }
 });
 
@@ -2570,7 +2573,15 @@ var staticRenderFns = [function () {
       target: "_blank",
       href: "#"
     }
-  }, [_vm._v("Davide")])])])])])])])])]);
+  }, [_vm._v("Davide")]), _vm._v(" "), _c("img", {
+    staticStyle: {
+      width: "40px"
+    },
+    attrs: {
+      src: "https://dinopixel.com/preload/0620/baby-yoda.png",
+      alt: ""
+    }
+  })])])])])])])])]);
 }];
 render._withStripped = true;
 
@@ -3301,7 +3312,7 @@ var render = function render() {
     attrs: {
       type: "submit"
     }
-  }, [_vm._v("Invia")])])]), _vm._v(" "), _vm._m(1)])])])]);
+  }, [_vm._v("Invia")])])]), _vm._v(" "), _vm._m(1)])]), _vm._v(" "), _c("span", [_vm._v("* Campi obbligatori")])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -3314,9 +3325,7 @@ var staticRenderFns = [function () {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "col-4"
-  }, [_c("form", {
-    staticClass: "border p-4"
-  }, [_c("h2", {
+  }, [_c("form", [_c("h2", {
     staticClass: "text-center"
   }, [_vm._v("Lascia un voto")]), _vm._v(" "), _c("div", {
     staticClass: "form-row d-flex justify-content-center"
@@ -3388,7 +3397,7 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("section", [_c("SearchBarSel"), _vm._v(" "), _c("Jumbo")], 1), _vm._v(" "), _c("section")]);
+  return _c("div", [_c("section", [_c("SearchBarSel"), _vm._v(" "), _c("Jumbo"), _vm._v(" "), _c("div", [_c("Description")], 1)], 1), _vm._v(" "), _c("section")]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -3410,7 +3419,7 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("router-view"), _vm._v(" "), _c("div"), _vm._v(" "), _c("div", [_c("Description")], 1), _vm._v(" "), _c("div", [_c("Footer")], 1)], 1);
+  return _c("div", [_c("router-view"), _vm._v(" "), _c("div"), _vm._v(" "), _c("div", [_c("Footer")], 1)], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;

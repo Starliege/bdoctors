@@ -12,9 +12,9 @@
       <!-- <Carousel/> -->
     </div>
     <!-- <Jumbo/> -->
-    <div>
+    <!-- <div>
       <Description/>
-    </div>
+    </div> -->
     
     <div>
       <Footer></Footer>
@@ -32,7 +32,7 @@ import Nav from '../components/Nav.vue';
 import Home from '../pages/Home.vue';
 import SearchBar from '../components/SearchBar.vue';
 import SearchBarSel from '../components/SearchBarSel.vue';
-import Description from '../components/Description.vue';
+// import Description from '../components/Description.vue';
 
 
 export default {
@@ -44,7 +44,7 @@ export default {
     // Carousel,
     SearchBar,
     SearchBarSel,
-    Description,
+    // Description,
 
 
   }
