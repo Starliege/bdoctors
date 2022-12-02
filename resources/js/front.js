@@ -14,6 +14,9 @@ Vue.filter('formatDate', function(value){
   }
 });
 
+const dayjs = require("dayjs");
+dayjs().format();
+
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 import App from './views/App.vue';
 import Vue from 'vue';

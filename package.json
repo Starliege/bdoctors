@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "dayjs": "^1.11.6",
         "moment": "^2.29.4",
         "vue-moment": "^4.1.0",
         "vue-router": "^3.6.5"
