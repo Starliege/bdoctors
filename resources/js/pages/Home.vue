@@ -3,12 +3,15 @@
     <section>
       <SearchBarSel/>
       <!-- <Carousel/> -->
-      <Jumbo/> 
+      <Jumbo/>
+      
         
       
     </section>
     <section>
-      
+      <div>
+        <Description/> 
+      </div>
     </section>
   </div>
 </template>
@@ -17,6 +20,8 @@ import Jumbo from '../components/Jumbo.vue';
 // import Carousel from '../components/Carousel.vue';
 import DoctorList from './DoctorList.vue';
 import SearchBarSel from '../components/SearchBarSel.vue';
+import Description from '../components/Description.vue';
+
 export default {
   name: 'Home',
 
@@ -24,7 +29,8 @@ export default {
     Jumbo,
     // Carousel,
     DoctorList,
-    SearchBarSel
+    SearchBarSel,
+    Description
 },
 
   data(){

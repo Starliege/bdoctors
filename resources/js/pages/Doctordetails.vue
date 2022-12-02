@@ -137,19 +137,20 @@
                     </div>
 
                     <div class="col-12">
-                        <form class="border p-4">
+                        <form class="">
 
                             <h2 class="text-center">Lascia un voto</h2>
                             <div class="form-row d-flex justify-content-center">
                                 <div class="col-auto my-1">
                                     <label class="mr-sm-2 sr-only" for="vote">Inserisci il voto</label>
-                                    <select name="vote" class="custom-select mr-sm-2 font-weight-bold" id="vote">
-                                        <option disabled selected value>Voto</option>
+                                    <select v-model="formVote.vote" required name="vote" class="custom-select mr-sm-2 font-weight-bold" id="vote">
+                                        <option disabled selected value>Scegli</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
                                         <option value="4">4</option>
                                         <option value="5">5</option>
+
                                     </select>
                                 </div>
                             </div>
@@ -188,6 +189,11 @@ export default {
                 review: "",
                 user_id: "",
             },
+            formVote: {
+               id: "",
+               vote: "",
+               user_id: "",
+            },
             conferma: false,
         }
     },
@@ -219,6 +225,15 @@ export default {
                     this.formData.surname_reviewer = "",
                     this.formData.review = "",
                     this.doc.reviews.push(response.data);
+            });
+        },
+        SendVotes() {
+            axios.post("/api/votes", this.formVote).then((response) => {
+                // console.log(response.data)
+                this.formVote.id = "",
+                this.formVote.vote = "",
+                this.formVote.user_id = "",
+                this.doc.vote.push(response.data);
             });
         },
     },
