@@ -30,6 +30,30 @@
 </div>
      </section>
 
+     <section>
+       <div class="card">
+         <div class="row no-gutters">
+           <div class="col-md-4">
+             <img src="https://www.idoctors.it/images/frontend/medico-vertical.svg" alt="...">
+           </div>
+           <div class="col-md-8">
+             <div class="card-body">
+               <h1 class="card-title">Sei un Medico?</h1>
+               <h3>Iscriviti e raggiungi più pazienti!</h3>
+                <h5 class="text-left py-5">Con <strong>Bdoctors:</strong></h5>
+               <ul>
+                   <li>Registrati e ricevi prenotazioni da <strong>nuovi pazienti</strong> per espandere la tua rete!</li>
+                   <li>Ricevi voti e recensioni da più clienti!</li>
+                   <li>Migliora la tua <strong>Visibilità</strong> Sponsorizzando il tuo Profilo.</li>
+                   <li>Gestisci il tutto anche da <strong>Smartphone.</strong></li>
+               </ul>
+               <a href="/register" class="btn btn-primary btn-lg my-5" tabindex="-1" role="button" aria-disabled="true">REGISTRATI</a>
+             </div>
+           </div>
+         </div>
+       </div>
+     </section>
+
      <section class="aboutus">
        <div class="card">
         <div class="row no-gutters">
@@ -46,30 +70,6 @@
           </div>
         </div>
       </div>
-     </section>
-
-     <section>
-       <div class="card">
-         <div class="row no-gutters">
-           <div class="col-md-4">
-             <img src="https://www.idoctors.it/images/frontend/medico-vertical.svg" alt="...">
-           </div>
-           <div class="col-md-8">
-             <div class="card-body">
-               <h1 class="card-title">Sei un Medico?</h1>
-               <h3>Iscriviti e raggiungi più pazienti!</h3>
-                <h5 class="text-left py-5">Con <strong>Bdoctors:</strong></h5>
-               <ul>
-                   <li>Registrati e ricevi prenotazioni da <strong>nuovi pazienti</strong> per espandere la tua rete</li>
-                   <li>Ricevi voti e recensioni da più clienti!</li>
-                   <li>Migliora la tua <strong>Visibilità</strong> sponsorizzando il tuo Profilo</li>
-                   <li>Gestisci il tutto anche da <strong>Smartphone</strong></li>
-               </ul>
-               <a href="/register" class="btn btn-primary btn-lg my-5" tabindex="-1" role="button" aria-disabled="true">REGISTRATI</a>
-             </div>
-           </div>
-         </div>
-       </div>
      </section>
 
 
@@ -110,6 +110,7 @@ img {
 
 .aboutus {
   margin-bottom: 150px;
+  margin-top: 150px;
 }
 
 

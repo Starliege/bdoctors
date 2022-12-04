@@ -5,7 +5,7 @@
             <div class="col col_searchbar ">
                 <h4 class="title_searchbar">Cerca un medico per specializzazione</h4>
                 <select name="" id="" v-model="filterText" class="form-control">
-                    <option value="">Scegli la specializzazione</option>
+                    <option value="">Scegli....</option>
                     <option :value="specialization.specialization" v-for="specialization in SpecsArray"
                         :key="specialization.id">
                         {{ specialization.specialization }}</option>
