@@ -23,6 +23,9 @@ export default {
 
 
 <style lang="scss" scoped>
+
+
+
 .jumbo {
     height: 600px;
     background-image: url('../../../public/img/dna-background.jpg');
@@ -32,6 +35,8 @@ export default {
     position: relative;
     opacity: 0.9;
     box-shadow:-1px 6px 20px 0px #000000ba;
+   
+
 }
 
 // .container-img {

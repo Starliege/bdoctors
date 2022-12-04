@@ -1,7 +1,7 @@
 <template>
     <div class="">
 
-        <div class="row searchbar row-cols-2 row-cols-lg-3 row-cols-sm-2 row-cols-md-2">
+        <div class="row searchbar row-cols-2 row-cols-lg-3 row-cols-sm-2 row-cols-md-2 m-0">
             <div class="col col_searchbar ">
                 <h4 class="title_searchbar">Cerca un medico per specializzazione</h4>
                 <select name="" id="" v-model="filterText" class="form-control">
@@ -20,35 +20,7 @@
 
 
 
-        <!-- <div class="row py-5">
-            <div v-for="doc in filteredDoctors" class="card mx-3 " style="width: 18rem;">
-                <div class="img-box">
-                    <img v-if="doc.image" :src="`/storage/${doc.image}`" class="card-img-top" alt="...">
-                    <img src="http://mascitelliandpartners.com/map/wp-content/uploads/2015/03/placeholder_user.png"
-                        class="card-img-top" v-else>
 
-                </div>
-
-                <div class="card-body">
-                    {{ doc.name }} {{ doc.surname }}
-
-                    <ul>
-                        <li v-for="spec in doc.specializations" :key="spec.id">
-                            {{ spec.specialization }}
-
-                        </li>
-                    </ul>
-
-                    <p v-if=" doc.reviews.length <= 0">nessuna recensione</p>
-                    <p v-else-if="doc.reviews.length == 1">{{doc.reviews.length}} recensione</p>
-                    <p v-else>{{doc.reviews.length}} recensioni</p>
-
-                    <p v-if="doc.stars.length <= 0">nessun voto disponibile</p>
-                    <p v-else>{{doc.avg}}</p>
-                    <router-link :to="{ name: 'doctor.details', params: {id: doc.id }}">show</router-link>
-                </div>
-            </div>
-        </div> -->
     </div>
 </template>
 
