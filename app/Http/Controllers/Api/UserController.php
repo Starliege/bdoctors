@@ -15,7 +15,16 @@ class UserController extends Controller
      */
     public function index()
     {
-        $result = User::orderBy('created_at', 'desc')->with('specializations', 'stars','sponsorships','reviews')->get();
+        $result= User::orderBy('created_at', 'desc')->with('specializations', 'stars','sponsorships','reviews')->get();
+        // $stars = $doctor->stars()->orderBy('created_at', 'DESC')->get();
+        // $votesMonth = $doctor->stars->all();
+        // $votes = $doctor->stars->pluck('vote')->all();
+        // if( count($votes) > 0){
+
+        //     $avg = round(array_sum($votes) / count($votes), 1);
+        // }else{
+        //     $avg = 0;
+        // }
         return response()->json(compact('result'));
     }
 

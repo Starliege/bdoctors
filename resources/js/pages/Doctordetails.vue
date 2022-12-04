@@ -6,6 +6,11 @@
             <div class="row p-5">
                 <div class="col-12 text-center">
                     <h1>Dott. {{ doc.name }} {{ doc.surname }} </h1>
+                    <div class="badge" v-if="(doc.active == true)">
+                        <p class="bg-warning p-1 rounded">
+                           Medico Sponsorizzato
+                        </p>
+                    </div>
                 </div>
                 <div class="row justify-content-center py-3 row_details">
                     <div class="col-4">
@@ -19,13 +24,13 @@
                         <p class="card-text"><strong> Email: </strong>{{ doc.email }}</p>
                         <p class="card-text"> <strong> Indirizzo: </strong>{{ doc.address }}</p>
                         <p> <strong> Specializzazioni :</strong>
-                            <span class="card-text" v-for="spec in doc.specializations" :key="spec.id">{{
-                                    spec.specialization
-                            }}
+                            <span class="card-text" v-for="spec in doc.specializations" :key="spec.id">  {{
+                                    spec.specialization }} -
                             </span>
                         </p>
                         <p class="card-text" v-if="doc.phone"> <strong> Numero di telefono: </strong>{{ doc.phone }}</p>
                         <p class="card-text" v-if="doc.services"> <strong> Prestazioni: </strong>{{ doc.services }}</p>
+                        <p class="card-text"> <strong> Media Voti: </strong>{{ doc.avg }}</p>
                         <a v-if="doc.cv" class="btn btn-secondary" :href="`/storage/${doc.cv}`" role="button"
                             target="_blank">&#129047;
                             Scarica
@@ -67,32 +72,32 @@
                         <form @submit.prevent="sendMes()" class="mex_form">
                             <!-- nome utente per il form  messaggio  -->
                             <div class="username-container input_style">
-                                <label for="name_sender"> Inserisci il tuo nome&#42;</label>
+                                <label for="name_sender"> Inserisci il tuo Nome&#42;</label>
 
                                 <input v-model="formMes.name_sender" type="text" placeholder="Nome" minlength="1"
                                     maxlength="100" required />
                             </div>
                             <div class="username-container input_style">
-                                <label for="surname_sender"> Inserisci il tuo cognome&#42;</label>
+                                <label for="surname_sender"> Inserisci il tuo Cognome&#42;</label>
 
                                 <input v-model="formMes.surname_sender" type="text" placeholder="Cognome" minlength="1"
                                     maxlength="100" required />
                             </div>
                             <!-- contenuto per il form messaggio -->
                             <div class="content-container input_style">
-                                <label for="message_sender"> Inserisci il tuo messaggio&#42;</label>
+                                <label for="message_sender"> Inserisci il tuo Messaggio&#42;</label>
 
                                 <textarea v-model="formMes.message_sender" type="text" placeholder="Messaggio"
                                     required></textarea>
                             </div>
                             <!-- email per il form messaggio  -->
                             <div class="email-container input_style">
-                                <label for="mail_sender"> Inserisci la tua email&#42;</label>
+                                <label for="mail_sender"> Inserisci la tua Email&#42;</label>
 
                                 <input type="email" v-model="formMes.mail_sender" placeholder="Email" required>
                             </div>
                             <div class="input_style">
-                                <button class="button-details" type="submit">Invia</button>
+                                <button class="button-details" @click="$refs.myMess.open()" type="submit">Invia</button>
                                 <h4 class="invio-messaggio text-center mt-3" v-if="conferma">Il tuo messaggio è stato
                                     inviato!
                                 </h4>
@@ -108,13 +113,13 @@
                             <h2>Lascia una recensione</h2>
                             <!-- input name  commento-->
                             <div class="name-comment input_style">
-                                <label for="name_reviewer">Inserisci il tuo nome&#42;</label>
+                                <label for="name_reviewer">Inserisci il tuo Nome&#42;</label>
 
                                 <input v-model="formData.name_reviewer" type="text" minlength="1" maxlength="100"
                                     placeholder="Nome" required />
                             </div>
                             <div class="name-comment input_style">
-                                <label for="surname_reviewer">Inserisci il tuo cognome&#42;</label>
+                                <label for="surname_reviewer">Inserisci il tuo Cognome&#42;</label>
 
                                 <input v-model="formData.surname_reviewer" type="text" minlength="1" maxlength="100"
                                     placeholder="Cognome" required />
@@ -122,7 +127,7 @@
                             <!-- input comment commento-->
                             <div class="text-comment input_style">
 
-                                <label for="review">Inserisci il tuo commento&#42;</label>
+                                <label for="review">Inserisci il tuo Commento&#42;</label>
 
                                 <textarea name="review" id="contentEditor" maxlength="255" placeholder="Commento"
                                     v-model="formData.review" required>
@@ -130,7 +135,7 @@
                             </div>
                             <div class="input_style">
 
-                                <button type="submit" class="button-details">Invia</button>
+                                <button type="submit" @click="$refs.myRef.open()" class="button-details" data-toggle="modal" data-target="#exampleModalCenter">Invia</button>
 
                             </div>
                         </form>
@@ -155,8 +160,10 @@
                                 </div>
                             </div>
                             <span class="col-auto my-1 d-flex justify-content-center">
+                                <div class="input_style">
 
-                                <input type="submit" class="btn btn-primary mt-4" value="Invia">
+                                    <input type="submit" @click="$refs.myVote.open()" class="button-details" value="Invia">
+                                </div>
                             </span>
                         </form>
                     </div>
@@ -168,11 +175,34 @@
             </div>
         </div>
 
+
+        <vue-modality ref="myMess" success title="Success" centered  @ok="$refs.myMess.hide()" @cancel="$refs.myMess.hide()">
+           MESSAGGIO INVIATO CON SUCCESSO
+        </vue-modality>
+
+        <vue-modality ref="myRef" success title="Success" centered  @ok="$refs.myRef.hide()" @cancel="$refs.myRef.hide()">
+            RECENSIONE INVIATA CON SUCCESSO
+        </vue-modality>
+
+        <vue-modality ref="myVote" success title="Success" centered  @ok="$refs.myVote.hide()" @cancel="$refs.myVote.hide()">
+            VOTO INVIATO CON SUCCESSO
+        </vue-modality>
+
+
     </section>
 </template>
 
 <script>
+const dayjs = require("dayjs");
+dayjs().format();
+
+import VueModality from 'vue-modality';
+
+
 export default {
+    components: {
+    VueModality
+  },
     data() {
         return {
             doc: [],
@@ -206,8 +236,23 @@ export default {
                 this.formData.user_id = this.doc.id
                 this.formVote.user_id = this.doc.id
                 console.log(this.doc)
+                this.doc.total = 0
+                this.doc.stars.forEach((star)=>{
+                this.doc.total += star.vote
+            });
+                this.doc.avg = Math.floor(this.doc.total / this.doc.stars.length)
+                this.doc.active = false;
+                    this.doc.sponsorships.forEach((sponsorship) => {
+                        let today = dayjs().format("YYYY-MM-DD HH:mm:ss");
+                        if (sponsorship.pivot.end_adv > today) {
+                            this.doc.active = true;
+                        }
+                    });
             })
         },
+        
+
+
         sendMes() {
             axios.post("/api/messages", this.formMes).then((response) => {
                 console.log(response.data)
@@ -239,11 +284,18 @@ export default {
     },
     mounted() {
         this.fetchDoc()
-    }
+    },
+
 }
 </script>
 
 <style lang="scss" scoped>
+
+.badge {
+    max-width: 200px;
+    padding: 5px;
+}
+
 section {
     background-color: rgba(56, 174, 252, 0.192);
 
