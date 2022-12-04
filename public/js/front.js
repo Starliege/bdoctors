@@ -2928,7 +2928,7 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {}, [_c("div", {
-    staticClass: "row searchbar row-cols-2 row-cols-lg-3 row-cols-sm-2 row-cols-md-2"
+    staticClass: "row searchbar row-cols-2 row-cols-lg-3 row-cols-sm-2 row-cols-md-2 m-0"
   }, [_c("div", {
     staticClass: "col col_searchbar"
   }, [_c("h4", {
@@ -3032,19 +3032,18 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "section title"
+    staticClass: "container py-5"
   }, [_vm._m(0), _vm._v(" "), _c("div", {
-    staticClass: "scroll"
-  }, [_c("div", {
-    staticClass: "card-wrapper d-flex p-3"
+    staticClass: "row-cols-lg-4 row-cols-md-2 row-cols-sm-1 row-cols-1 row py-5"
   }, _vm._l(_vm.activeSponsors, function (doctor) {
     return _c("div", {
-      key: doctor.id
+      key: doctor.id,
+      staticClass: "col"
     }, [_c("div", {
       staticClass: "card",
       staticStyle: {
-        width: "16rem",
-        height: "500px"
+        width: "18rem",
+        height: "600px"
       }
     }, [_c("div", {
       staticClass: "img-box py-2 px-2"
@@ -3064,7 +3063,7 @@ var render = function render() {
     }, [_vm._v(_vm._s(doctor.name) + " " + _vm._s(doctor.surname))]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("ul", _vm._l(doctor.specializations, function (specialization) {
       return _c("li", {
         key: specialization.id
-      }, [_vm._v("\n                          " + _vm._s(specialization.specialization) + "\n                      ")]);
+      }, [_vm._v("\n                        " + _vm._s(specialization.specialization) + "\n                    ")]);
     }), 0), _vm._v(" "), _c("div", {
       staticClass: "button d-flex justify-content-center"
     }, [_c("router-link", {
@@ -3077,15 +3076,15 @@ var render = function render() {
         }
       }
     }, [_c("button", {
-      staticClass: "btn btn-primary"
-    }, [_vm._v("\n                             Dettagli\n                           ")])])], 1)])]);
-  }), 0)])]);
+      staticClass: "button-details"
+    }, [_vm._v("\n                            Dettagli\n                        ")])])], 1)])]);
+  }), 0)]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "title text-center py-5"
+    staticClass: "title text-center title_section"
   }, [_c("h1", [_vm._v("Medici in Evidenza")])]);
 }];
 render._withStripped = true;
@@ -3217,10 +3216,10 @@ var render = function render() {
     staticClass: "badge"
   }, [_c("p", {
     staticClass: "bg-warning p-1 rounded"
-  }, [_vm._v("\n                       Medico Sponsorizzato\n                    ")])]) : _vm._e()]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                        Medico Sponsorizzato\n                    ")])]) : _vm._e()]), _vm._v(" "), _c("div", {
     staticClass: "row justify-content-center py-3 row_details"
   }, [_c("div", {
-    staticClass: "col-4"
+    staticClass: "col-12 col-sm-12 col-md-4 col-lg-4"
   }, [_c("div", {
     staticClass: "d-flex flex-column justify-content-center"
   }, [_vm.doc.image ? _c("img", {
@@ -3235,7 +3234,7 @@ var render = function render() {
       src: "http://mascitelliandpartners.com/map/wp-content/uploads/2015/03/placeholder_user.png"
     }
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "col-8 col_docdetails"
+    staticClass: "col-12 col-sm-12 col-md-8 col-lg-8 col_docdetails"
   }, [_c("p", {
     staticClass: "card-text"
   }, [_c("strong", [_vm._v(" Email: ")]), _vm._v(_vm._s(_vm.doc.email))]), _vm._v(" "), _c("p", {
@@ -3244,14 +3243,16 @@ var render = function render() {
     return _c("span", {
       key: spec.id,
       staticClass: "card-text"
-    }, [_vm._v("  " + _vm._s(spec.specialization) + " -\n                        ")]);
+    }, [_vm._v(" " + _vm._s(spec.specialization) + " -\n                        ")]);
   })], 2), _vm._v(" "), _vm.doc.phone ? _c("p", {
     staticClass: "card-text"
   }, [_c("strong", [_vm._v(" Numero di telefono: ")]), _vm._v(_vm._s(_vm.doc.phone))]) : _vm._e(), _vm._v(" "), _vm.doc.services ? _c("p", {
     staticClass: "card-text"
-  }, [_c("strong", [_vm._v(" Prestazioni: ")]), _vm._v(_vm._s(_vm.doc.services))]) : _vm._e(), _vm._v(" "), _c("p", {
+  }, [_c("strong", [_vm._v(" Prestazioni: ")]), _vm._v(_vm._s(_vm.doc.services))]) : _vm._e(), _vm._v(" "), _vm.doc.avg ? _c("p", {
     staticClass: "card-text"
-  }, [_c("strong", [_vm._v(" Media Voti: ")]), _vm._v(_vm._s(_vm.doc.avg))]), _vm._v(" "), _vm.doc.cv ? _c("a", {
+  }, [_c("strong", [_vm._v(" Media Voti: ")]), _vm._v(_vm._s(_vm.doc.avg))]) : _c("p", {
+    staticClass: "card-text"
+  }, [_c("strong", [_vm._v("nessun voto ")])]), _vm._v(" "), _vm.doc.cv ? _c("a", {
     staticClass: "btn btn-secondary",
     attrs: {
       href: "/storage/".concat(_vm.doc.cv),
@@ -3529,7 +3530,7 @@ var render = function render() {
       }
     }
   }, [_vm._v("Invia")])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-12"
+    staticClass: "col-12 py-4"
   }, [_c("form", {
     on: {
       submit: function submit($event) {
@@ -3540,7 +3541,7 @@ var render = function render() {
   }, [_c("h2", {
     staticClass: "text-center"
   }, [_vm._v("Lascia un voto")]), _vm._v(" "), _c("div", {
-    staticClass: "form-row d-flex justify-content-center"
+    staticClass: "form-row d-flex justify-content-center input_style"
   }, [_c("div", {
     staticClass: "col-auto my-1"
   }, [_c("label", {
@@ -3603,7 +3604,7 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "input_style"
   }, [_c("input", {
-    staticClass: "button-details",
+    staticClass: "button-details button_input",
     attrs: {
       type: "submit",
       value: "Invia"
@@ -3628,7 +3629,7 @@ var render = function render() {
         return _vm.$refs.myMess.hide();
       }
     }
-  }, [_vm._v("\n       MESSAGGIO INVIATO CON SUCCESSO\n    ")]), _vm._v(" "), _c("vue-modality", {
+  }, [_vm._v("\n        MESSAGGIO INVIATO CON SUCCESSO\n    ")]), _vm._v(" "), _c("vue-modality", {
     ref: "myRef",
     attrs: {
       success: "",
@@ -3843,7 +3844,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".scroll[data-v-0e0d5f7f] {\n  margin: 0 auto;\n  max-width: 1800px;\n  overflow: auto;\n  white-space: nowrap;\n}\n.card-wrapper[data-v-0e0d5f7f] {\n  gap: 20px;\n}\n.card[data-v-0e0d5f7f] {\n  box-shadow: 1px 1px 4px black;\n}\n.card-img-top[data-v-0e0d5f7f] {\n  -o-object-fit: contain;\n     object-fit: contain;\n}\nli[data-v-0e0d5f7f] {\n  list-style: none;\n}", ""]);
+exports.push([module.i, ".container[data-v-0e0d5f7f] {\n  margin-top: 50px;\n}\n.row[data-v-0e0d5f7f] {\n  row-gap: 20px;\n}\n.row .col[data-v-0e0d5f7f] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.row .col .card[data-v-0e0d5f7f] {\n  box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.631372549);\n}\n.row .col .card .card-img-top[data-v-0e0d5f7f] {\n  height: 237px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.7294117647);\n  transition: all 200ms;\n}\n.row .col .card .card-img-top[data-v-0e0d5f7f]:hover {\n  transform: scale(1.01);\n}\n.row .col .card .card-title[data-v-0e0d5f7f] {\n  margin-top: 20px;\n  text-transform: uppercase;\n  font-weight: 600;\n}\n.row .col .card li[data-v-0e0d5f7f] {\n  list-style: none;\n}\n.row .col .card .button[data-v-0e0d5f7f] {\n  margin-top: auto;\n  margin-bottom: 20px;\n}\n.row .col .card .button-details[data-v-0e0d5f7f] {\n  padding: 5px 20px;\n  border-radius: 20px;\n  background-color: rgba(24, 111, 121, 0.7098039216);\n  border: none;\n  color: white;\n  font-size: 18px;\n  transition: all 300ms;\n}\n.row .col .card .button-details[data-v-0e0d5f7f]:hover {\n  background-color: rgba(24, 111, 121, 0.8470588235);\n}\n.title_section[data-v-0e0d5f7f] {\n  max-width: 400px;\n  margin: 0 auto;\n  background-color: rgba(69, 118, 205, 0.4784313725);\n  padding: 18px;\n  box-shadow: 0px 5px 20px 1px rgba(102, 98, 98, 0.4784313725);\n  color: white;\n  text-shadow: -4px 2px 5px rgba(0, 0, 0, 0.6117647059);\n  border-radius: 5px;\n}", ""]);
 
 // exports
 
@@ -3881,7 +3882,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".badge[data-v-0b80800a] {\n  max-width: 200px;\n  padding: 5px;\n}\nsection[data-v-0b80800a] {\n  background-color: rgba(56, 174, 252, 0.192);\n}\nsection .row_details[data-v-0b80800a] {\n  background-color: rgba(0, 0, 0, 0.2509803922);\n  color: #40434a;\n  border-radius: 10px;\n  padding: 20px;\n}\nsection .row_details .col_docdetails[data-v-0b80800a] {\n  background-color: rgba(0, 255, 246, 0.1411764706);\n  padding: 10px;\n  border-radius: 3px;\n  font-size: 20px;\n}\nsection .row-forms[data-v-0b80800a] {\n  display: flex;\n  justify-content: space-between;\n  padding: 2rem 0;\n  width: 100%;\n}\nsection .row-forms .col-12[data-v-0b80800a] {\n  background-color: rgba(0, 0, 0, 0.2509803922);\n  color: #40434a;\n  border-radius: 10px;\n  margin-top: 30px;\n}\nsection .row-forms .mex_form input[data-v-0b80800a],\nsection .row-forms .rev_form input[data-v-0b80800a] {\n  width: 80%;\n}\nsection .row-forms h2[data-v-0b80800a] {\n  text-align: center;\n  font-weight: 600;\n  font-size: 22px;\n}\nsection .row-forms .input_style[data-v-0b80800a] {\n  display: flex;\n  flex-direction: column;\n  align-content: center;\n  align-items: center;\n  padding: 10px 0;\n}\nsection .row-forms .input_style label[data-v-0b80800a] {\n  font-weight: 600;\n}\nsection .row-forms .input_style input[data-v-0b80800a] {\n  line-height: 40px;\n  padding: 0 10px;\n  background-color: rgba(211, 235, 252, 0.6117647059);\n  border: none;\n  color: black;\n  border-radius: 4px;\n  box-shadow: 1px 1px 4px black;\n}\nsection .row-forms .input_style textarea[data-v-0b80800a] {\n  width: 80%;\n  padding: 20px;\n  background-color: rgba(211, 235, 252, 0.6117647059);\n  border: none;\n  color: black;\n  border-radius: 4px;\n  box-shadow: 1px 1px 4px black;\n}\nsection .row-forms .input_style .button-details[data-v-0b80800a] {\n  padding: 5px 20px;\n  border-radius: 20px;\n  background-color: rgba(24, 111, 121, 0.7098039216);\n  border: none;\n  color: white;\n  font-size: 18px;\n  transition: all 300ms;\n}\nsection .row-forms .input_style .button-details[data-v-0b80800a]:hover {\n  background-color: rgba(24, 111, 121, 0.8470588235);\n}\nsection .reviews_title[data-v-0b80800a] {\n  max-width: 400px;\n  margin: 0 auto;\n  background-color: rgba(69, 118, 205, 0.4784313725);\n  padding: 20px;\n  box-shadow: 0px 5px 20px 1px rgba(102, 98, 98, 0.4784313725);\n  color: white;\n  text-shadow: -4px 2px 5px rgba(0, 0, 0, 0.6117647059);\n  border-radius: 5px;\n}\nsection .col-reviews[data-v-0b80800a] {\n  background-color: rgba(53, 120, 252, 0.768627451);\n  color: white;\n  border-radius: 20px;\n  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.6901960784);\n}\nsection .col-reviews .name_reviewer[data-v-0b80800a] {\n  text-shadow: 2px 1px 2px #143470;\n}\nsection .col-reviews .review_content[data-v-0b80800a] {\n  background-color: rgba(0, 0, 0, 0.1882352941);\n  border-radius: 15px;\n  padding: 20px;\n}\nsection .col-reviews .review_user[data-v-0b80800a] {\n  padding: 10px;\n}\nsection .col-reviews .review_date[data-v-0b80800a] {\n  padding: 20px 0;\n  font-size: 14px;\n}", ""]);
+exports.push([module.i, ".badge[data-v-0b80800a] {\n  max-width: 200px;\n  padding: 5px;\n}\nsection[data-v-0b80800a] {\n  background-color: rgba(56, 174, 252, 0.192);\n}\nsection .row_details[data-v-0b80800a] {\n  background-color: rgba(0, 0, 0, 0.2509803922);\n  color: #40434a;\n  border-radius: 10px;\n  padding: 20px;\n  row-gap: 20px;\n}\nsection .row_details .card-img-top[data-v-0b80800a] {\n  height: 350px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.49);\n  transition: all 200ms;\n}\nsection .row_details .card-img-top[data-v-0b80800a]:hover {\n  transform: scale(1.01);\n}\nsection .row_details .col_docdetails[data-v-0b80800a] {\n  background-color: rgba(0, 255, 246, 0.1411764706);\n  padding: 10px;\n  border-radius: 3px;\n  font-size: 20px;\n}\nsection .row-forms[data-v-0b80800a] {\n  display: flex;\n  justify-content: space-between;\n  padding: 2rem 0;\n  width: 100%;\n}\nsection .row-forms .col-12[data-v-0b80800a] {\n  background-color: rgba(0, 0, 0, 0.2509803922);\n  color: #40434a;\n  border-radius: 10px;\n  margin-top: 30px;\n}\nsection .row-forms .mex_form input[data-v-0b80800a],\nsection .row-forms .rev_form input[data-v-0b80800a] {\n  width: 80%;\n}\nsection .row-forms h2[data-v-0b80800a] {\n  text-align: center;\n  font-weight: 600;\n  font-size: 22px;\n}\nsection .row-forms .input_style[data-v-0b80800a] {\n  display: flex;\n  flex-direction: column;\n  align-content: center;\n  align-items: center;\n  padding: 10px 0;\n}\nsection .row-forms .input_style label[data-v-0b80800a] {\n  font-weight: 600;\n}\nsection .row-forms .input_style input[data-v-0b80800a],\nsection .row-forms .input_style select[data-v-0b80800a] {\n  line-height: 40px;\n  padding: 0 10px;\n  background-color: rgba(211, 235, 252, 0.6117647059);\n  border: none;\n  color: black;\n  border-radius: 4px;\n  box-shadow: 1px 1px 4px black;\n}\nsection .row-forms .input_style select[data-v-0b80800a] {\n  min-width: 100px;\n}\nsection .row-forms .input_style textarea[data-v-0b80800a] {\n  width: 80%;\n  padding: 20px;\n  background-color: rgba(211, 235, 252, 0.6117647059);\n  border: none;\n  color: black;\n  border-radius: 4px;\n  box-shadow: 1px 1px 4px black;\n}\nsection .row-forms .input_style .button-details[data-v-0b80800a] {\n  padding: 5px 20px;\n  border-radius: 20px;\n  background-color: rgba(24, 111, 121, 0.7098039216);\n  border: none;\n  color: white;\n  font-size: 18px;\n  transition: all 300ms;\n  line-height: 30px;\n  box-shadow: 1px 1px 4px black;\n}\nsection .row-forms .input_style .button-details[data-v-0b80800a]:hover {\n  background-color: rgba(24, 111, 121, 0.8470588235);\n}\nsection .reviews_title[data-v-0b80800a] {\n  max-width: 400px;\n  margin: 0 auto;\n  background-color: rgba(69, 118, 205, 0.4784313725);\n  padding: 20px;\n  box-shadow: 0px 5px 20px 1px rgba(102, 98, 98, 0.4784313725);\n  color: white;\n  text-shadow: -4px 2px 5px rgba(0, 0, 0, 0.6117647059);\n  border-radius: 5px;\n}\nsection .col-reviews[data-v-0b80800a] {\n  background-color: rgba(53, 120, 252, 0.768627451);\n  color: white;\n  border-radius: 20px;\n  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.6901960784);\n}\nsection .col-reviews .name_reviewer[data-v-0b80800a] {\n  text-shadow: 2px 1px 2px #143470;\n}\nsection .col-reviews .review_content[data-v-0b80800a] {\n  background-color: rgba(0, 0, 0, 0.1882352941);\n  border-radius: 15px;\n  padding: 20px;\n}\nsection .col-reviews .review_user[data-v-0b80800a] {\n  padding: 10px;\n}\nsection .col-reviews .review_date[data-v-0b80800a] {\n  padding: 20px 0;\n  font-size: 14px;\n}", ""]);
 
 // exports
 
@@ -48743,7 +48744,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\bdoctors\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Laravel\bdoctors-team2\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })

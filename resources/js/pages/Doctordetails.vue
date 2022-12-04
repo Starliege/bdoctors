@@ -8,29 +8,31 @@
                     <h1>Dott. {{ doc.name }} {{ doc.surname }} </h1>
                     <div class="badge" v-if="(doc.active == true)">
                         <p class="bg-warning p-1 rounded">
-                           Medico Sponsorizzato
+                            Medico Sponsorizzato
                         </p>
                     </div>
                 </div>
                 <div class="row justify-content-center py-3 row_details">
-                    <div class="col-4">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                         <div class="d-flex flex-column justify-content-center">
                             <img v-if="doc.image" :src="`/storage/${doc.image}`" class="card-img-top" alt="...">
                             <img src="http://mascitelliandpartners.com/map/wp-content/uploads/2015/03/placeholder_user.png"
                                 class="card-img-top" v-else>
                         </div>
                     </div>
-                    <div class="col-8 col_docdetails">
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col_docdetails">
                         <p class="card-text"><strong> Email: </strong>{{ doc.email }}</p>
                         <p class="card-text"> <strong> Indirizzo: </strong>{{ doc.address }}</p>
                         <p> <strong> Specializzazioni :</strong>
-                            <span class="card-text" v-for="spec in doc.specializations" :key="spec.id">  {{
-                                    spec.specialization }} -
+                            <span class="card-text" v-for="spec in doc.specializations" :key="spec.id"> {{
+                                    spec.specialization
+                            }} -
                             </span>
                         </p>
                         <p class="card-text" v-if="doc.phone"> <strong> Numero di telefono: </strong>{{ doc.phone }}</p>
                         <p class="card-text" v-if="doc.services"> <strong> Prestazioni: </strong>{{ doc.services }}</p>
-                        <p class="card-text"> <strong> Media Voti: </strong>{{ doc.avg }}</p>
+                        <p class="card-text" v-if="doc.avg"> <strong> Media Voti: </strong>{{ doc.avg }}</p>
+                        <p class="card-text" v-else> <strong>nessun voto </strong></p>
                         <a v-if="doc.cv" class="btn btn-secondary" :href="`/storage/${doc.cv}`" role="button"
                             target="_blank">&#129047;
                             Scarica
@@ -135,20 +137,22 @@
                             </div>
                             <div class="input_style">
 
-                                <button type="submit" @click="$refs.myRef.open()" class="button-details" data-toggle="modal" data-target="#exampleModalCenter">Invia</button>
+                                <button type="submit" @click="$refs.myRef.open()" class="button-details"
+                                    data-toggle="modal" data-target="#exampleModalCenter">Invia</button>
 
                             </div>
                         </form>
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-12 py-4">
                         <form @submit.prevent="SendVotes()">
 
                             <h2 class="text-center">Lascia un voto</h2>
-                            <div class="form-row d-flex justify-content-center">
+                            <div class="form-row d-flex justify-content-center input_style">
                                 <div class="col-auto my-1">
                                     <label class="mr-sm-2 sr-only" for="vote">Inserisci il voto</label>
-                                    <select v-model="formVote.vote" required name="vote" class="custom-select mr-sm-2 font-weight-bold" id="vote">
+                                    <select v-model="formVote.vote" required name="vote"
+                                        class="custom-select mr-sm-2 font-weight-bold" id="vote">
                                         <option disabled selected value>Scegli</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -162,7 +166,8 @@
                             <span class="col-auto my-1 d-flex justify-content-center">
                                 <div class="input_style">
 
-                                    <input type="submit" @click="$refs.myVote.open()" class="button-details" value="Invia">
+                                    <input type="submit" @click="$refs.myVote.open()"
+                                        class="button-details button_input" value="Invia">
                                 </div>
                             </span>
                         </form>
@@ -176,15 +181,18 @@
         </div>
 
 
-        <vue-modality ref="myMess" success title="Success" centered  @ok="$refs.myMess.hide()" @cancel="$refs.myMess.hide()">
-           MESSAGGIO INVIATO CON SUCCESSO
+        <vue-modality ref="myMess" success title="Success" centered @ok="$refs.myMess.hide()"
+            @cancel="$refs.myMess.hide()">
+            MESSAGGIO INVIATO CON SUCCESSO
         </vue-modality>
 
-        <vue-modality ref="myRef" success title="Success" centered  @ok="$refs.myRef.hide()" @cancel="$refs.myRef.hide()">
+        <vue-modality ref="myRef" success title="Success" centered @ok="$refs.myRef.hide()"
+            @cancel="$refs.myRef.hide()">
             RECENSIONE INVIATA CON SUCCESSO
         </vue-modality>
 
-        <vue-modality ref="myVote" success title="Success" centered  @ok="$refs.myVote.hide()" @cancel="$refs.myVote.hide()">
+        <vue-modality ref="myVote" success title="Success" centered @ok="$refs.myVote.hide()"
+            @cancel="$refs.myVote.hide()">
             VOTO INVIATO CON SUCCESSO
         </vue-modality>
 
@@ -201,8 +209,8 @@ import VueModality from 'vue-modality';
 
 export default {
     components: {
-    VueModality
-  },
+        VueModality
+    },
     data() {
         return {
             doc: [],
@@ -220,9 +228,9 @@ export default {
                 user_id: "",
             },
             formVote: {
-               user_id: "",
-               vote: "",
-           
+                user_id: "",
+                vote: "",
+
             },
             conferma: false,
         }
@@ -237,20 +245,20 @@ export default {
                 this.formVote.user_id = this.doc.id
                 console.log(this.doc)
                 this.doc.total = 0
-                this.doc.stars.forEach((star)=>{
-                this.doc.total += star.vote
-            });
+                this.doc.stars.forEach((star) => {
+                    this.doc.total += star.vote
+                });
                 this.doc.avg = Math.floor(this.doc.total / this.doc.stars.length)
                 this.doc.active = false;
-                    this.doc.sponsorships.forEach((sponsorship) => {
-                        let today = dayjs().format("YYYY-MM-DD HH:mm:ss");
-                        if (sponsorship.pivot.end_adv > today) {
-                            this.doc.active = true;
-                        }
-                    });
+                this.doc.sponsorships.forEach((sponsorship) => {
+                    let today = dayjs().format("YYYY-MM-DD HH:mm:ss");
+                    if (sponsorship.pivot.end_adv > today) {
+                        this.doc.active = true;
+                    }
+                });
             })
         },
-        
+
 
 
         sendMes() {
@@ -278,7 +286,7 @@ export default {
                 // console.log(response.data)
                 // this.formVote.user_id = "",
                 this.formVote.vote = "",
-                this.doc.vote.push(response.data);
+                    this.doc.vote.push(response.data);
             });
         },
     },
@@ -290,7 +298,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .badge {
     max-width: 200px;
     padding: 5px;
@@ -304,12 +311,27 @@ section {
         color: #40434a;
         border-radius: 10px;
         padding: 20px;
+        row-gap:20px;
+
+        .card-img-top {
+            height: 350px;
+            object-fit: cover;
+            box-shadow: 0px 3px 8px 0px rgb(0 0 0 / 49%);
+            transition: all 200ms;
+            
+
+            &:hover {
+                transform: scale(1.01);
+            }
+        }
 
         .col_docdetails {
             background-color: #00fff624;
             padding: 10px;
             border-radius: 3px;
             font-size: 20px;
+
+
         }
     }
 
@@ -349,7 +371,8 @@ section {
                 font-weight: 600;
             }
 
-            input {
+            input,
+            select {
                 line-height: 40px;
                 padding: 0 10px;
                 background-color: #d3ebfc9c;
@@ -357,6 +380,10 @@ section {
                 color: black;
                 border-radius: 4px;
                 box-shadow: 1px 1px 4px black;
+            }
+
+            select {
+                min-width: 100px;
             }
 
             textarea {
@@ -377,6 +404,9 @@ section {
                 color: white;
                 font-size: 18px;
                 transition: all 300ms;
+                line-height: 30px;
+                box-shadow: 1px 1px 4px black;
+
 
                 &:hover {
                     // transform: scale(1.02);
